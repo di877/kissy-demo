@@ -1740,7 +1740,7 @@ body a:hover {
 }
 /* line 78, ../src/style.sass */
 .cont .main {
-  margin-left: 270px;
+  margin-left: 290px;
 }
 /* line 81, ../src/style.sass */
 .cont .main .main-hd {
@@ -1903,16 +1903,15 @@ body a:hover {
 /* line 192, ../src/style.sass */
 .side {
   position: fixed;
-  margin-right: -250px;
+  margin-right: -260px;
   padding-right: 9px;
-  width: 250px;
+  width: 260px;
   border-right: 1px solid #121212;
   -webkit-box-shadow: rgba(255, 255, 255, 0.07) 1px 0 0;
   -moz-box-shadow: rgba(255, 255, 255, 0.07) 1px 0 0;
   box-shadow: rgba(255, 255, 255, 0.07) 1px 0 0;
-  overflow: auto;
 }
-/* line 200, ../src/style.sass */
+/* line 199, ../src/style.sass */
 .side h2 {
   padding: 5px 0;
   margin-bottom: 15px;
@@ -1924,17 +1923,17 @@ body a:hover {
   -moz-box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
   box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
 }
-/* line 210, ../src/style.sass */
+/* line 209, ../src/style.sass */
 .side .sidebar .sidebar-hd {
+  margin: 0 10px 14px 0;
   padding: 5px 0;
-  margin-bottom: 14px;
   height: 30px;
   border-bottom: 1px solid #121212;
   -webkit-box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
   -moz-box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
   box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
 }
-/* line 216, ../src/style.sass */
+/* line 215, ../src/style.sass */
 .side .sidebar .sidebar-hd a {
   display: inline;
   float: left;
@@ -1943,28 +1942,28 @@ body a:hover {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-/* line 221, ../src/style.sass */
+/* line 220, ../src/style.sass */
 .side .sidebar .sidebar-hd .current {
   background: #202020;
   -webkit-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
   -moz-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
   box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
 }
-/* line 225, ../src/style.sass */
+/* line 224, ../src/style.sass */
 .side .sidebar .sidebar-bd {
-  overflow: hidden;
+  overflow: auto;
 }
-/* line 228, ../src/style.sass */
+/* line 227, ../src/style.sass */
 .side .sidebar .sidebar-bd li {
   cursor: pointer;
   font-size: 14px;
   line-height: 18px;
 }
-/* line 233, ../src/style.sass */
+/* line 232, ../src/style.sass */
 .side .sidebar .sidebar-bd .modules {
-  margin-bottom: -1px;
+  margin: 0 10px -1px 0;
 }
-/* line 236, ../src/style.sass */
+/* line 235, ../src/style.sass */
 .side .sidebar .sidebar-bd .modules .module-name {
   padding: 5px 5px 4px;
   background: rgba(0, 0, 0, 0.3);
@@ -1973,17 +1972,17 @@ body a:hover {
   -moz-box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
   box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
 }
-/* line 241, ../src/style.sass */
+/* line 240, ../src/style.sass */
 .side .sidebar .sidebar-bd .modules .module-name i {
   display: inline;
   float: left;
   line-height: 16px;
 }
-/* line 245, ../src/style.sass */
+/* line 244, ../src/style.sass */
 .side .sidebar .sidebar-bd .subcats, .side .sidebar .sidebar-bd .entries {
   display: none;
 }
-/* line 248, ../src/style.sass */
+/* line 247, ../src/style.sass */
 .side .sidebar .sidebar-bd .subcat-name {
   padding: 5px 5px 4px 22px;
   background: rgba(0, 0, 0, 0.1);
@@ -1992,7 +1991,7 @@ body a:hover {
   -moz-box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
   box-shadow: rgba(255, 255, 255, 0.07) 0 1px 0;
 }
-/* line 253, ../src/style.sass */
+/* line 252, ../src/style.sass */
 .side .sidebar .sidebar-bd .entrie {
   padding: 5px 5px 4px 22px;
   font-size: 12px;
@@ -2000,35 +1999,35 @@ body a:hover {
   border-bottom: 1px solid #eeeeee;
   background: white;
 }
-/* line 260, ../src/style.sass */
+/* line 259, ../src/style.sass */
 .side .sidebar .sidebar-bd .entrie .entrie-desc {
   color: #999999;
 }
-/* line 263, ../src/style.sass */
+/* line 262, ../src/style.sass */
 .side .sidebar .sidebar-bd .current {
   color: white;
   border-color: #3385f7;
   background: #3385f7;
   text-shadow: rgba(0, 0, 0, 0.2) 1px 1px 0;
 }
-/* line 269, ../src/style.sass */
+/* line 268, ../src/style.sass */
 .side .sidebar .sidebar-bd .current .entrie-desc {
   color: #eeeeee;
 }
-/* line 272, ../src/style.sass */
+/* line 271, ../src/style.sass */
 .side .config {
   display: none;
 }
-/* line 275, ../src/style.sass */
+/* line 274, ../src/style.sass */
 .side .config dt {
   margin-bottom: 10px;
 }
-/* line 278, ../src/style.sass */
+/* line 277, ../src/style.sass */
 .side .config dd {
   margin-bottom: 20px;
   overflow: hidden;
 }
-/* line 282, ../src/style.sass */
+/* line 281, ../src/style.sass */
 .side .config dd .icon {
   display: inline;
   float: left;
@@ -2039,7 +2038,7 @@ body a:hover {
   border-radius: 4px 0 0 4px;
   background: #eeeeee;
 }
-/* line 289, ../src/style.sass */
+/* line 288, ../src/style.sass */
 .side .config dd .txt {
   display: inline;
   float: left;
@@ -2051,23 +2050,23 @@ body a:hover {
   -moz-border-radius: 0 4px 4px 0;
   border-radius: 0 4px 4px 0;
 }
-/* line 299, ../src/style.sass */
+/* line 298, ../src/style.sass */
 .side .config .author .icon {
   padding: 5px;
   height: 17px;
 }
-/* line 303, ../src/style.sass */
+/* line 302, ../src/style.sass */
 .side .config .author input {
   height: 21px;
   line-height: 21px;
   overflow: hidden;
 }
-/* line 310, ../src/style.sass */
+/* line 309, ../src/style.sass */
 .side .config .intro .icon {
   padding: 20px 3px;
   height: 17px;
 }
-/* line 314, ../src/style.sass */
+/* line 313, ../src/style.sass */
 .side .config .intro textarea {
   height: 51px;
   resize: none;
