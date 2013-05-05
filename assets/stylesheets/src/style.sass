@@ -207,22 +207,42 @@ body
   .sidebar
 
     .sidebar-hd
-      margin: 0 10px 14px 0
+      margin-right: 10px
       padding: 5px 0
       height: 30px
       +border-shadow("bottom")
-
-      a
-        +float-left
-        padding: 7px 10px
-        +border-radius(4px)
-
-      .current
-        background: #202020
-        +box-shadow(rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset)
   
     .sidebar-bd
-      overflow: auto
+
+      .modules-hd
+        margin: 0 10px 10px 0
+        padding: 10px 0
+        text-align: center
+        border: 1px solid rgba(0, 0, 0, 0.5)
+        border-top: 0
+        +border-radius(0 0 4px 4px)
+        background: rgba(255, 255, 255, 0.06)
+        overflow: hidden
+
+        a
+          padding: 5px 10px
+          color: #000
+          +text-shadow(rgba(255, 255, 255, .08) 0 1px 0)
+          +border-radius(10px)
+          &:hover
+            text-decoration: none
+            color: #FFF
+            +text-shadow(#000 0 1px 0)
+
+
+        .current
+          color: rgba(255, 255, 255, 0.7)
+          background: #202020
+          +box-shadow(rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset)
+
+
+      .modules-bd
+        overflow: auto
 
       li
         cursor: pointer
