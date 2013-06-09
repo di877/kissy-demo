@@ -22,8 +22,9 @@ KISSY.add('demo/index', function(S, Base, Sidebar) {
    * Index
    */
   var Index = function() {
-    this.codeBdEl    = $('#J_CodeBd');
-    this.modulesBdEl = $('#J_ModulesBd');
+    this.$side      = $('#J_Side');
+    this.$modulesBd = $('#J_ModulesBd');
+    this.$codeBd    = $('#J_CodeBd');
     this.init();
     this.bind();
   };
@@ -48,8 +49,9 @@ KISSY.add('demo/index', function(S, Base, Sidebar) {
     var self = this,
         winH = $(window).height();
 
-    self.codeBdEl.css('height', winH - 91);
-    self.modulesBdEl.css('height', winH - 128);
+    self.$side.css('height', winH - 40);
+    self.$modulesBd.css('height', winH - 140);
+    self.$codeBd.css('height', winH - 120);
   };
 
   /**

@@ -45,10 +45,13 @@ KISSY.add('demo/list', function(S, Base, Code, Node, IO, XTemplate) {
     tpl = [
       '<ul>',
         '{{#demo}}',
-          '<li>',
-            '<a href="javascript:;" data-id="{{id}}">',
-              '{{intro}}',
-            '</a>',
+          '<li class="demo">',
+            '<div class="demo-bd"></div>',
+            '<div class="demo-ft">',
+              '<a href="javascript:;" data-id="{{id}}">',
+                '{{intro}}',
+              '</a>',
+            '</div>',
           '</li>',
         '{{/demo}}',
       '</ul>'
