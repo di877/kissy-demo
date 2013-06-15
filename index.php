@@ -88,7 +88,7 @@
     
     <?php 
       $ENV = "";
-      if (strpos($_SERVER['REQUEST_URI'], 'dev') !== FALSE) {
+      if (strpos($_SERVER['REQUEST_URI'], '__dev__') !== FALSE) {
         $ENV = "dev";
       }
     ?>
