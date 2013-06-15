@@ -5,10 +5,17 @@
 $COLOR_DEFAULT_TEXT   : #34495E
 // hight text
 $COLOR_HIGHLIGHT      : #FFFFFF
+
 // default link
 $COLOR_DEFAULT_LINK   : #34495E
 // light link
 $COLOR_LIGHT_LINK     : #FFFFFF
+
+// default border
+$COLOR_DEFAULT_BORDER : #DDDDDD
+// light border
+$COLOR_LIGHT_BORDER   : #FFFFFF
+
 // background
 $COLOR_BACKGROUND     : #FFFFFF
 
@@ -85,9 +92,9 @@ body
     
     .main-hd
       height: 40px
-      margin-bottom: 20px
+      margin-bottom: 25px
       padding-bottom: 10px
-      border-bottom: 1px solid #DDD
+      border-bottom: 1px solid $COLOR_DEFAULT_BORDER
 
       h1
         font-size: 35px
@@ -164,7 +171,7 @@ body
         width: 100%
         height: 50%
         background: #FFF
-        border: 1px solid #DDD
+        border: 1px solid $COLOR_DEFAULT_BORDER
 
       .editor-label
         z-index: 10
@@ -177,7 +184,7 @@ body
         font-size: 12px
         line-height: 18px
         color: #666
-        border: 1px solid #DDD
+        border: 1px solid $COLOR_DEFAULT_BORDER
         background: #FFF
 
         i
@@ -195,8 +202,9 @@ body
     font-size: 16px
     line-height: 40px
     color: $COLOR_HIGHLIGHT
-    +border-radius(4px)
+    +border-radius(5px)
     background: $COLOR_TURQUOISE
+    +transition(all .3s ease-in-out)
     &:hover
       text-decoration: none
       background: #48C9b0
@@ -217,13 +225,6 @@ body
   width: 260px
   border-right: 1px solid $COLOR_SILVER
   background: $COLOR_CLOUDS
-
-  h2
-    padding: 5px 0
-    margin-bottom: 15px
-    height: 30px
-    font-size: 26px
-    line-height: 26px
 
   .sidebar
 
@@ -315,45 +316,46 @@ body
   .config
     display: none
 
-    dt
-      margin-bottom: 10px
+    .config-hd
 
-    dd
-      margin-bottom: 20px
-      overflow: hidden
-
-      .icon
-        +float-left
-        color: #666
-        border-right: 1px solid #CCC
-        +border-radius(4px 0 0 4px)
-        background: #EEE
-
-      .txt
-        +float-left
-        margin: 0
-        padding: 3px
-        width: 150px
-        border: none
-        +border-radius(0 4px 4px 0)
-
-    .author
-
-      .icon
-        padding: 5px
-        height: 17px
-
-      input
-        height: 21px
-        line-height: 21px
+      h2
+        margin-bottom: 20px
+        padding-bottom: 10px
+        width: 260px
+        height: 40px
+        font-size: 26px
+        line-height: 40px
+        text-overflow: ellipsis
+        border-bottom: 1px solid $COLOR_DEFAULT_BORDER
         overflow: hidden
 
-    .intro
+    .config-bd
 
-      .icon
-        padding: 20px 3px
-        height: 17px
+      li
+        position: relative
+        margin-bottom: 20px
+        width: 260px
 
-      textarea
-        height: 51px
-        resize: none
+        input
+          padding: 10px 40px 10px 10px
+          width: 206px
+          height: 20px
+          font: 16px Lato, sans-serif
+          color: $COLOR_DEFAULT_TEXT
+          border: 2px solid $COLOR_LIGHT_BORDER
+          +border-radius(5px)
+          +transition(all .3s ease-in-out)
+
+        label
+          position: absolute
+          font-size: 16px
+          top: 15px
+          right: 15px
+          color: $COLOR_SILVER
+
+        input:focus
+          outline: 0
+          border-color: $COLOR_GREEN_SEA
+
+        input:focus + label
+          color: $COLOR_GREEN_SEA
