@@ -26,6 +26,8 @@ $COLOR_MIDNIGHT_BLUE  : #2C3E50
 
 // TURQUOISE
 $COLOR_TURQUOISE      : #1ABC9C
+// TURQUOISE HOVER
+$COLOR_TURQUOISE_HOVER: #48C9b0
 // GREEN SEA
 $COLOR_GREEN_SEA      : #16A085
 
@@ -40,6 +42,32 @@ $COLOR_PETER_RIVER    : #3498DB
 $COLOR_BELIZE_HOLE    : #2980B9
 
 +global-reset()
+
+@mixin base-input
+
+  input
+    padding: 10px 40px 10px 10px
+    width: 206px
+    height: 20px
+    font: 16px Lato, sans-serif
+    color: $COLOR_DEFAULT_TEXT
+    border: 2px solid $COLOR_LIGHT_BORDER
+    +border-radius(5px)
+    +transition(all .3s ease-in-out)
+
+  label
+    position: absolute
+    font-size: 16px
+    top: 15px
+    right: 15px
+    color: $COLOR_SILVER
+
+  input:focus
+    outline: 0
+    border-color: $COLOR_GREEN_SEA
+
+  input:focus + label
+    color: $COLOR_GREEN_SEA
 
 body
   font: 14px Lato, sans-serif
@@ -229,25 +257,30 @@ body
   .sidebar
 
     .sidebar-hd
-      height: 40px
+      position: relative
+      margin-bottom: 10px
+      @include base-input
+      overflow: hidden
 
     .sidebar-bd
 
       .modules-hd
-        margin: 10px 0
-        text-align: center
+        margin-bottom: 10px
         +border-radius(5px)
-        background: $COLOR_TURQUOISE
         overflow: hidden
 
         a
           +float-left
           width: 130px
           height: 40px
+          text-align: center
           line-height: 40px
           color: $COLOR_HIGHLIGHT
+          background: $COLOR_TURQUOISE
+          +transition(all .3s ease-in-out)
           &:hover
             text-decoration: none
+            background: $COLOR_TURQUOISE_HOVER
 
         .current
           background: $COLOR_GREEN_SEA
@@ -335,27 +368,4 @@ body
         position: relative
         margin-bottom: 20px
         width: 260px
-
-        input
-          padding: 10px 40px 10px 10px
-          width: 206px
-          height: 20px
-          font: 16px Lato, sans-serif
-          color: $COLOR_DEFAULT_TEXT
-          border: 2px solid $COLOR_LIGHT_BORDER
-          +border-radius(5px)
-          +transition(all .3s ease-in-out)
-
-        label
-          position: absolute
-          font-size: 16px
-          top: 15px
-          right: 15px
-          color: $COLOR_SILVER
-
-        input:focus
-          outline: 0
-          border-color: $COLOR_GREEN_SEA
-
-        input:focus + label
-          color: $COLOR_GREEN_SEA
+        @include base-input

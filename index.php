@@ -64,8 +64,8 @@
         <!--S sidebar -->
         <nav id="J_Sidebar" class="sidebar">
           <div id="J_SidebarHd" class="sidebar-hd">
-            <input type="search" value="" placeholder="Search" />
-            <i class="icon-search"></i>
+            <input id="J_Search" value="" placeholder="Search" />
+            <label class="icon-search" for="J_Search"></label>
           </div>
           <div id="J_SidebarBd" class="sidebar-bd">
             <div class="modules-mod">
