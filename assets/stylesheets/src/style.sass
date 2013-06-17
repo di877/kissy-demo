@@ -2,31 +2,75 @@
 @import "font-awesome"
 
 // default text
-$COLOR_DEFAULT_TEXT   : #C6C6C6
+$COLOR_DEFAULT_TEXT   : #34495E
 // hight text
-$COLOR_HIGHLIGHT      : #FFF
-// default link
-$COLOR_DEFAULT_LINK   : #C6C6C6
-// light link
-$COLOR_LIGHT_LINK     : #84BCDE
-// default border
-$COLOR_DEFAULT_BORDER : #121212
-// light border
-$COLOR_LIGHT_BORDER   : rgba(255, 255, 255, .07)
-// background
-$COLOR_BACKGROUND     : #2F2F2F
+$COLOR_HIGHLIGHT      : #FFFFFF
 
-@mixin border-shadow($orient)
-  @if $orient == right
-    border-right: 1px solid $COLOR_DEFAULT_BORDER
-    +box-shadow($COLOR_LIGHT_BORDER 1px 0 0)
-  @else if $orient == bottom
-    border-bottom: 1px solid $COLOR_DEFAULT_BORDER
-    +box-shadow($COLOR_LIGHT_BORDER 0 1px 0)
+// default link
+$COLOR_DEFAULT_LINK   : #34495E
+// light link
+$COLOR_LIGHT_LINK     : #FFFFFF
+
+// default border
+$COLOR_DEFAULT_BORDER : #DDDDDD
+// light border
+$COLOR_LIGHT_BORDER   : #FFFFFF
+
+// background
+$COLOR_BACKGROUND     : #FFFFFF
+
+// WET ASPHALT
+$COLOR_WET_ASPHALT    : #34495E
+// MIDNIGHT BLUE
+$COLOR_MIDNIGHT_BLUE  : #2C3E50
+
+// TURQUOISE
+$COLOR_TURQUOISE      : #1ABC9C
+// TURQUOISE HOVER
+$COLOR_TURQUOISE_HOVER: #48C9b0
+// GREEN SEA
+$COLOR_GREEN_SEA      : #16A085
+
+// CLOUDS
+$COLOR_CLOUDS         : #ECF0F1
+// SILVER
+$COLOR_SILVER         : #BDC3C7
+
+// PETER RIVER
+$COLOR_PETER_RIVER    : #3498DB
+// BELIZE HOLE
+$COLOR_BELIZE_HOLE    : #2980B9
 
 +global-reset()
 
+@mixin base-input
+
+  input
+    padding: 10px 40px 10px 10px
+    width: 206px
+    height: 20px
+    font: 16px Lato, sans-serif
+    color: $COLOR_DEFAULT_TEXT
+    border: 2px solid $COLOR_LIGHT_BORDER
+    +border-radius(5px)
+    +transition(all .3s ease-in-out)
+
+  label
+    position: absolute
+    font-size: 16px
+    top: 15px
+    right: 15px
+    color: $COLOR_SILVER
+
+  input:focus
+    outline: 0
+    border-color: $COLOR_GREEN_SEA
+
+  input:focus + label
+    color: $COLOR_GREEN_SEA
+
 body
+  font: 14px Lato, sans-serif
   color: $COLOR_DEFAULT_TEXT
   background: $COLOR_BACKGROUND
 
@@ -54,7 +98,6 @@ body
   background: #B94A48
 
 .wrap
-  padding: 20px 10px
   overflow: hidden
 
 .head
@@ -63,9 +106,6 @@ body
   top: 0
   left: 0
   width: 100%
-  +border-shadow("bottom")
-  border-width: 4px
-  background: #2F2F2F
   overflow: hidden
 
 .cont, .side
@@ -75,23 +115,23 @@ body
   width: 100%
 
   .main
-    margin-left: 270px
+    padding: 20px
+    margin-left: 300px
     
     .main-hd
-      height: 35px
-      margin-bottom: 15px
-      padding-bottom: 5px
-      +border-shadow("bottom")
+      height: 40px
+      margin-bottom: 25px
+      padding-bottom: 10px
+      border-bottom: 1px solid $COLOR_DEFAULT_BORDER
 
       h1
         font-size: 35px
-        color: $COLOR_HIGHLIGHT
 
       .add, .back
         +float-right
         margin-top: 10px
         font-size: 18px
-        color: $COLOR_LIGHT_LINK
+        color: $COLOR_DEFAULT_LINK
 
       .btn
         margin-right: 10px
@@ -101,16 +141,33 @@ body
 
   .list
 
-    li
-      padding: 10px 15px
-      margin-bottom: 15px
-      background: rgba(0, 0, 0 , .2)
-      +border-radius(4px)
-      +box-shadow(rgba(0, 0, 0, 0.2) 0 0 0 1px inset)
+    .demo
+      +float-left
+      margin: 0 10px 10px 0
+      padding: 10px
+      width: 350px
+      height: 250px
+      background: $COLOR_CLOUDS
+      +border-radius(5px)
+
+    .demo-bd
+      margin-bottom: 10px
+      width: 350px
+      height: 210px
+      background: #FFFFFF
+      +border-radius(5px)
+
+    .demo-ft
+      text-indent: 10px
+      height: 30px
+      line-height: 30px
+      +border-radius(5px)
+      background: $COLOR_TURQUOISE
+      overflow: hidden
 
       a
-        font-size: 18px
-        font-weight: 700
+        color: $COLOR_LIGHT_LINK
+
 
   .code
     display: none
@@ -142,7 +199,7 @@ body
         width: 100%
         height: 50%
         background: #FFF
-        border: 1px solid #000
+        border: 1px solid $COLOR_DEFAULT_BORDER
 
       .editor-label
         z-index: 10
@@ -155,7 +212,7 @@ body
         font-size: 12px
         line-height: 18px
         color: #666
-        border: 1px solid #DDD
+        border: 1px solid $COLOR_DEFAULT_BORDER
         background: #FFF
 
         i
@@ -168,19 +225,20 @@ body
   .btn
     cursor: pointer
     +inline-block
-    padding: 5px 10px
-    color: #333
-    border: 1px solid #000
-    +border-radius(4px)
-    background: #F5F5F5
-    +background-image(linear-gradient(#FFF, #E6E6E6))
+    padding: 0 20px
+    height: 40px
+    font-size: 16px
+    line-height: 40px
+    color: $COLOR_HIGHLIGHT
+    +border-radius(5px)
+    background: $COLOR_TURQUOISE
+    +transition(all .3s ease-in-out)
     &:hover
       text-decoration: none
-      background: #E6E6E6
-      background-position: 0 -29px
+      background: #48C9b0
 
     i
-      margin-right: 5px
+      margin-right: 10px
 
   .disabled
     cursor: default
@@ -190,123 +248,124 @@ body
 
 .side
   position: fixed
-  margin-right: -250px
-  padding-right: 9px
-  width: 250px
-  +border-shadow("right")
-  overflow: auto
-
-  h2
-    padding: 5px 0
-    margin-bottom: 15px
-    height: 30px
-    font-size: 26px
-    line-height: 26px
-    +border-shadow("bottom")
+  margin-right: -300px
+  padding: 20px 19px 20px 20px
+  width: 260px
+  border-right: 1px solid $COLOR_SILVER
+  background: $COLOR_CLOUDS
 
   .sidebar
 
     .sidebar-hd
-      padding: 5px 0
-      margin-bottom: 14px
-      height: 30px
-      +border-shadow("bottom")
-
-      a
-        +float-left
-        padding: 7px 10px
-        +border-radius(4px)
-
-      .current
-        background: #202020
-        +box-shadow(rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset)
-  
-    .sidebar-bd
+      position: relative
+      margin-bottom: 10px
+      @include base-input
       overflow: hidden
 
-      li
-        cursor: pointer
-        font-size: 14px
-        line-height: 18px
+    .sidebar-bd
+
+      .modules-hd
+        margin-bottom: 10px
+        +border-radius(5px)
+        overflow: hidden
+
+        a
+          +float-left
+          width: 130px
+          height: 40px
+          text-align: center
+          line-height: 40px
+          color: $COLOR_HIGHLIGHT
+          background: $COLOR_TURQUOISE
+          +transition(all .3s ease-in-out)
+          &:hover
+            text-decoration: none
+            background: $COLOR_TURQUOISE_HOVER
+
+        .current
+          background: $COLOR_GREEN_SEA
+
+      .modules-bd
+        overflow: auto
+
+        li
+          cursor: pointer
+          font-size: 14px
+          line-height: 18px
 
       .modules
-        margin-bottom: -1px
+
+        .module
+          &:first-child
+            .module-name
+              +border-radius(5px 5px 0 0)
+          &:last-child
+            .module-name
+              +border-radius(0 0 5px 5px)
 
         .module-name
-          padding: 5px 5px 4px
-          background: rgba(0, 0, 0 , .3)
-          +border-shadow("bottom")
+          padding: 10px
+          color: $COLOR_HIGHLIGHT
+          border-top: 2px solid $COLOR_MIDNIGHT_BLUE
+          background: $COLOR_WET_ASPHALT
 
           i
             +float-left
             line-height: 16px
 
-      .subcats, .entries
-        display: none
+        .subcats, .entries
+          display: none
+          overflow: hidden
 
-      .subcat-name
-        padding: 5px 5px 4px 22px
-        background: rgba(0, 0, 0 , .1)
-        +border-shadow("bottom")
+        .subcat-name, .entrie
+          padding: 10px 10px 10px 27px
 
-      .entrie
-        padding: 5px 5px 4px 22px
-        font-size: 12px
-        color: #333
-        border-bottom: 1px solid #EEE
-        background: #FFF
+        .subcat-name
+          color: $COLOR_HIGHLIGHT
+          border-bottom: 1px solid $COLOR_GREEN_SEA
+          background: $COLOR_TURQUOISE
 
-        .entrie-desc
-          color: #999
+        .entrie
+          border-bottom: 1px solid $COLOR_SILVER
+          background: $COLOR_CLOUDS
 
-      .current
-        color: #FFF
-        border-color: #3385F7
-        background: #3385F7
-        +text-shadow(rgba(0, 0, 0, .2) 1px 1px 0)
+          .entrie-name
+            margin-bottom: 5px
 
-        .entrie-desc
-          color: #EEE
+          .entrie-desc
+            font-size: 12px
+            color: #999
+
+        .current
+          color: $COLOR_HIGHLIGHT
+          background: $COLOR_PETER_RIVER
+          border-color: $COLOR_BELIZE_HOLE
+          +text-shadow(rgba(0, 0, 0, 0.2) 1px 1px 0)
+          +box-shadow(black 2px 2px 10px)
+
+          .entrie-desc
+            color: $COLOR_HIGHLIGHT
 
   .config
     display: none
 
-    dt
-      margin-bottom: 10px
+    .config-hd
 
-    dd
-      margin-bottom: 20px
-      overflow: hidden
+      h2
+        margin-bottom: 20px
+        padding-bottom: 10px
+        width: 260px
+        height: 40px
+        font-size: 26px
+        line-height: 40px
+        text-overflow: ellipsis
+        border-bottom: 1px solid $COLOR_DEFAULT_BORDER
+        overflow: hidden
 
-      .icon
-        +float-left
-        color: #666
-        border-right: 1px solid #CCC
-        +border-radius(4px 0 0 4px)
-        background: #EEE
+    .config-bd
 
-      .txt
-        +float-left
-        margin: 0
-        padding: 3px
-        width: 150px
-        border: none
-        +border-radius(0 4px 4px 0)
-
-    .author
-
-      .icon
-        padding: 5px
-
-      input
-        height: 21px
-        line-height: 21px
-
-    .intro
-
-      .icon
-        padding: 20px 3px
-
-      textarea
-        height: 51px
-        resize: none
+      li
+        position: relative
+        margin-bottom: 20px
+        width: 260px
+        @include base-input

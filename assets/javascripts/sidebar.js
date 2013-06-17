@@ -13,11 +13,13 @@ KISSY.add('demo/sidebar', function(S, Base, List, Node, XTemplate) {
    * Sidebar
    */
   var Sidebar = function(api) {
-    this.el     = $('#J_Sidebar');
-    this.elHd   = $('#J_SidebarHd');
-    this.elBd   = $('#J_SidebarBd');
+    this.el        = $('#J_Sidebar');
+    this.elHd      = $('#J_SidebarHd');
+    this.elBd      = $('#J_SidebarBd');
+    this.modulesHd = $('#J_ModulesHd');
+    this.modulesBd = $('#J_ModulesBd');
     this.events = {
-      'click #J_SidebarHd a': 'getApi',
+      'click #J_ModulesHd a': 'getApi',
       'click .J_Module'     : 'toggle',
       'click .J_Subcat'     : 'toggle',
       'click .J_Entrie'     : 'toggle'
@@ -35,7 +37,7 @@ KISSY.add('demo/sidebar', function(S, Base, List, Node, XTemplate) {
    */
   Sidebar.prototype.init = function() {
     Sidebar.superclass.constructor.call(this);
-    this.elHd.one('a').fire('click');
+    this.modulesHd.one('a').fire('click');
   };
 
   /**
@@ -106,7 +108,7 @@ KISSY.add('demo/sidebar', function(S, Base, List, Node, XTemplate) {
     });
 
     buffer = new XTemplate(tpl.join('')).render({api: api});
-    self.elBd.html(buffer);
+    self.modulesBd.html(buffer);
   };
 
   /**
@@ -183,7 +185,7 @@ KISSY.add('demo/sidebar', function(S, Base, List, Node, XTemplate) {
         break;
 
       case 'entrie':
-        $('.J_Entrie', self.elBd).removeClass('current');
+        $('.J_Entrie', self.modulesBd).removeClass('current');
         target.addClass('current');
 
         self._set('entrie', name);

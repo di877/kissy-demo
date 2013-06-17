@@ -64,10 +64,18 @@
         <!--S sidebar -->
         <nav id="J_Sidebar" class="sidebar">
           <div id="J_SidebarHd" class="sidebar-hd">
-              <a href="javascript:;" title="核心模块集" data-api-mod="demo/api/core">core</a>
-              <a href="javascript:;" title="扩展模块集" data-api-mod="demo/api/components">components</a>
+            <input id="J_Search" value="" placeholder="Search" />
+            <label class="icon-search" for="J_Search"></label>
           </div>
-          <div id="J_SidebarBd" class="sidebar-bd"></div>
+          <div id="J_SidebarBd" class="sidebar-bd">
+            <div class="modules-mod">
+              <div id="J_ModulesHd" class="modules-hd">
+                <a href="javascript:;" title="核心模块集" data-api-mod="demo/api/core">core</a>
+                <a href="javascript:;" title="扩展模块集" data-api-mod="demo/api/components">components</a>
+              </div>
+              <div id="J_ModulesBd" class="modules-bd"></div>
+            </div>
+          </div>
         </nav>
         <!--E sidebar -->
         
@@ -80,7 +88,7 @@
     
     <?php 
       $ENV = "";
-      if (strpos($_SERVER['REQUEST_URI'], 'dev') !== FALSE) {
+      if (strpos($_SERVER['REQUEST_URI'], '__dev__') !== FALSE) {
         $ENV = "dev";
       }
     ?>
