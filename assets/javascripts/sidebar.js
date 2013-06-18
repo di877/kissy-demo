@@ -1,5 +1,5 @@
 /**
- * @fileoverview Sidebar.js
+ * @fileOverview Sidebar.js
  * @author 莫争 <gaoli.gl@taobao.com>
  * @version 1.0
  */
@@ -12,7 +12,7 @@ KISSY.add('demo/sidebar', function(S, Base, List, Node, XTemplate) {
   /**
    * Sidebar
    */
-  var Sidebar = function(api) {
+  var Sidebar = function() {
     this.el        = $('#J_Sidebar');
     this.elHd      = $('#J_SidebarHd');
     this.elBd      = $('#J_SidebarBd');
@@ -37,6 +37,9 @@ KISSY.add('demo/sidebar', function(S, Base, List, Node, XTemplate) {
    */
   Sidebar.prototype.init = function() {
     Sidebar.superclass.constructor.call(this);
+    this.bind();
+
+    // 默认触发 core
     this.modulesHd.one('a').fire('click');
   };
 
@@ -109,6 +112,22 @@ KISSY.add('demo/sidebar', function(S, Base, List, Node, XTemplate) {
 
     buffer = new XTemplate(tpl.join('')).render({api: api});
     self.modulesBd.html(buffer);
+  };
+
+  /**
+   * 事件绑定
+   */
+  Sidebar.prototype.bind = function() {
+    var self = this;
+
+    $(window).on('hashchange', function() {
+      var queryId = location.hash.replace(/#!\/(.+)\//, '$1');
+
+      if (queryId && queryId !== '#') {
+        self._render('list');
+        LIST.render(queryId);
+      }
+    });
   };
 
   /**
@@ -194,8 +213,8 @@ KISSY.add('demo/sidebar', function(S, Base, List, Node, XTemplate) {
 
     }
 
-    LIST.render();
-
+    // 设置浏览器 hash 值
+    location.hash =  '!/' + self._makeQueryId() + '/';
   };
 
   /**

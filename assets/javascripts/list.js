@@ -1,5 +1,5 @@
 /**
- * @fileoverview list.js
+ * @fileOverview list.js
  * @author 莫争 <gaoli.gl@taobao.com>
  * @version 1.0
  */
@@ -37,8 +37,9 @@ KISSY.add('demo/list', function(S, Base, Code, Node, IO, XTemplate) {
 
   /**
    * 渲染界面
+   * @param {String} queryId
    */
-  List.prototype.render = function() {
+  List.prototype.render = function(queryId) {
     var self = this,
         tpl;
 
@@ -57,10 +58,10 @@ KISSY.add('demo/list', function(S, Base, Code, Node, IO, XTemplate) {
       '</ul>'
     ].join('');
 
-    IO.post('./act/list.php', {module: self._makeQueryId()}, function(res) {
+    IO.post('./act/list.php', {module: queryId}, function(res) {
       var buffer = new XTemplate(tpl).render({demo: res.data});
 
-      self.elHd.html(self._makeQueryId() + ' Demo');
+      self.elHd.html(queryId + ' Demo');
       self.elBd.html(buffer);
     });
   };
@@ -73,6 +74,9 @@ KISSY.add('demo/list', function(S, Base, Code, Node, IO, XTemplate) {
 
     self._render('code');
     CODE.render();
+
+    // 设置浏览器 hash 值
+    location.hash =  '';
   };
 
   /**
