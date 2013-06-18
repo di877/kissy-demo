@@ -19,11 +19,6 @@ $COLOR_LIGHT_BORDER   : #FFFFFF
 // background
 $COLOR_BACKGROUND     : #FFFFFF
 
-// WET ASPHALT
-$COLOR_WET_ASPHALT    : #34495E
-// MIDNIGHT BLUE
-$COLOR_MIDNIGHT_BLUE  : #2C3E50
-
 // TURQUOISE
 $COLOR_TURQUOISE      : #1ABC9C
 // TURQUOISE HOVER
@@ -31,15 +26,25 @@ $COLOR_TURQUOISE_HOVER: #48C9b0
 // GREEN SEA
 $COLOR_GREEN_SEA      : #16A085
 
-// CLOUDS
-$COLOR_CLOUDS         : #ECF0F1
-// SILVER
-$COLOR_SILVER         : #BDC3C7
-
 // PETER RIVER
 $COLOR_PETER_RIVER    : #3498DB
 // BELIZE HOLE
 $COLOR_BELIZE_HOLE    : #2980B9
+
+// WET ASPHALT
+$COLOR_WET_ASPHALT    : #34495E
+// MIDNIGHT BLUE
+$COLOR_MIDNIGHT_BLUE  : #2C3E50
+
+// ALIZARIN
+$COLOR_ALIZARIN       : #E74C3C
+// POMEGRANATE
+$COLOR_POMEGRANATE    : #C0392B
+
+// CLOUDS
+$COLOR_CLOUDS         : #ECF0F1
+// SILVER
+$COLOR_SILVER         : #BDC3C7
 
 +global-reset()
 
@@ -87,24 +92,20 @@ body
   text-align: center
   line-height: 24px
   font-size: 14px
-  color: #FFF
-  background: #468847
-  +border-radius(0 0 3px 3px)
+  color: $COLOR_HIGHLIGHT
+  background: $COLOR_TURQUOISE
 
   i
     margin-right: 10px
 
 .error
-  background: #B94A48
+  background: $COLOR_POMEGRANATE
 
 .wrap
   overflow: hidden
 
 .head
   z-index: 100
-  position: fixed
-  top: 0
-  left: 0
   width: 100%
   overflow: hidden
 
