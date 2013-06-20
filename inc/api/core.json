@@ -383,30 +383,6 @@
                     "slug":"http://docs.kissyui.com/docs/html/api/core/anim/index.html#anim.Anim.prototype.resume"
                 }]
             },
-//                {
-//                    "name":"静态方法",
-//                    "entries":[{
-//                        "name":"Anim.isRunning()",
-//                        "desc":"用于判断 elem 上是否有动画对象在执行",
-//                        "slug":"http://docs.kissyui.com/docs/html/api/core/anim/index.html#anim.Anim.isRunning"
-//                    },{
-//                        "name":"Anim.isPaused()",
-//                        "desc":" 用于判断 elem 上是否有动画对象在暂停",
-//                        "slug":"http://docs.kissyui.com/docs/html/api/core/anim/index.html#anim.Anim.isPaused"
-//                    },{
-//                        "name":"Anim.stop()",
-//                        "desc":"停止某元素上的动画",
-//                        "slug":"http://docs.kissyui.com/docs/html/api/core/anim/index.html#anim.Anim.stop"
-//                    },{
-//                        "name":"Anim.pause()",
-//                        "desc":"暂停某元素上的动画",
-//                        "slug":"http://docs.kissyui.com/docs/html/api/core/anim/index.html#anim.Anim.pause"
-//                    },{
-//                        "name":"Anim.resume()",
-//                        "desc":"继续某元素上的动画",
-//                        "slug":"http://docs.kissyui.com/docs/html/api/core/anim/index.html#anim.Anim.resume"
-//                    }]
-//                },
             {
                 "name":"事件",
                 "entries":[{
@@ -941,18 +917,6 @@
             "name":"node",
             "slug":"http://docs.kissyui.com/docs/html/api/core/node/index.html",
             "subcat":[
-//                    {
-//                    "name":"静态方法",
-//                    "entries":[{
-//                        "name":"all()",
-//                        "desc":"根据选择器字符串得到节点列表",
-//                        "slug":"http://docs.kissyui.com/docs/html/api/core/node/all.html"
-//                    },{
-//                        "name":"one()",
-//                        "desc":"如果参数为选择字符串, 找不到则返回 null, 其他情况下等同于 NodeList.all( args... ).item(0)",
-//                        "slug":"http://docs.kissyui.com/docs/html/api/core/node/one.html"
-//                    }]
-//                },
                 {
                 "name":"获取节点",
                 "entries":[{
