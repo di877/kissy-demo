@@ -258,14 +258,16 @@ body
   .sidebar
 
     .sidebar-hd
-      position: relative
-      margin-bottom: 10px
-      @include base-input
-      overflow: hidden
+
+      .search
+        position: relative
+        margin-bottom: 10px
+        @include base-input
+        overflow: hidden
 
     .sidebar-bd
 
-      .modules-hd
+      .tab
         margin-bottom: 10px
         +border-radius(5px)
         overflow: hidden
@@ -286,7 +288,7 @@ body
         .current
           background: $COLOR_GREEN_SEA
 
-      .modules-bd
+      .api
         overflow: auto
 
         li
@@ -295,6 +297,7 @@ body
           line-height: 18px
 
       .modules
+        display: none
 
         .module
           &:first-child

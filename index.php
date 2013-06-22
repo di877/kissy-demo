@@ -60,41 +60,24 @@
 
       </div>
       <aside id="J_Side" class="side">
-        
-        <!--S sidebar -->
-        <nav id="J_Sidebar" class="sidebar">
-          <div id="J_SidebarHd" class="sidebar-hd">
-            <input id="J_Search" value="" placeholder="Search" />
-            <label class="icon-search" for="J_Search"></label>
-          </div>
-          <div id="J_SidebarBd" class="sidebar-bd">
-            <div class="modules-mod">
-              <div id="J_ModulesHd" class="modules-hd">
-                <a href="javascript:;" title="核心模块集" data-api-mod="demo/api/core">core</a>
-                <a href="javascript:;" title="扩展模块集" data-api-mod="demo/api/components">components</a>
-              </div>
-              <div id="J_ModulesBd" class="modules-bd"></div>
-            </div>
-          </div>
-        </nav>
-        <!--E sidebar -->
-        
-        <!--S config -->
+        <nav id="J_Sidebar" class="sidebar"></nav>
         <div id="J_Config" class="config"></div>
-        <!--E config -->
-
       </aside>
     </div>
-    
-    <?php 
-      $ENV = "";
-      if (strpos($_SERVER['REQUEST_URI'], '__dev__') !== FALSE) {
-        $ENV = "dev";
+
+    <?php
+      /* 开发环境 */
+      $isDev = isset($_GET['__dev__']);
+      /* seed 配置 */
+      if ($isDev) {
+        $seed = 'seed.js';
+      } else {
+        $seed = 'seed-min.js';
       }
     ?>
 
-    <script src="http://a.tbcdn.cn/s/kissy/1.3.0/seed-min.js" <?php if ($ENV != "dev") { ?>data-config="{combine:true}"<?php } ?>></script>
+    <script src="http://a.tbcdn.cn/s/kissy/1.3.0/<?=$seed?>"></script>
     <script src="./assets/build/ace/ace.js"></script>
-    <script src="./assets/build/index-min.js"></script>
+    <script src="./assets/build/core.js"></script>
   </body>
 </html>
