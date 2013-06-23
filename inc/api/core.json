@@ -1,4 +1,5 @@
 {
+    "id"  :"core",
     "anme":"core",
     "desc":"核心模块集",
     "subcls":[

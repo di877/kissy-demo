@@ -62,9 +62,9 @@ KISSY.add('demo/ApisView', function(S, MVC, ApiView) {
 
     tab   : function(e) {
       var $target = $(e.target),
-          id      = $target.attr('data-api-id');
+          paths   = $target.attr('data-api-id');
 
-      MVC.Router.navigate('/api/' + id);
+      MVC.Router.navigate('/api/' + paths);
     }
   }, {
     ATTRS: {

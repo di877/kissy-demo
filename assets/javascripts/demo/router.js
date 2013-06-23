@@ -22,9 +22,10 @@ KISSY.add('demo/router', function(S, MVC, ApisView, ApiCollection) {
       MVC.Router.navigate('/api/core');
     },
 
-    api  : function(path) {
+    api  : function(path, query) {
       var self  = this,
           id    = path.id,
+          p     = query.p;
           index = id === 'core' ? 0 : 1;
 
       self.apisView.switch(index);

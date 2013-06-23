@@ -14,13 +14,35 @@ KISSY.add('demo/ApiModel', function(S, mvc) {
   };
 
   S.extend(ApiModel, mvc.Model, {
+
+    /**
+     * 数据验证
+     * @return {String}
+     */
     validate: function() {
       S.each(this.get('subcls'), function(module) {
         module.subcat  ? module.hasSubcat  = true : '';
         module.subcls  ? module.hasSubcls  = true : '';
         module.entries ? module.hasEntries = true : '';
       });
+    },
+
+    /**
+     * 制作查询
+     * @return {String}
+     */
+    makeQuery: function() {
+      var self  = this,
+          types = ['module', 'entrie'],
+          temp  = [];
+
+      S.each(types, function(type) {
+        self.get(type) && temp.push(self.get(type))
+      });
+
+      return temp.join('.');
     }
+
   });
 
   return ApiModel;

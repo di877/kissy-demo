@@ -142,6 +142,11 @@ KISSY.add('demo/ApiView', function(S, MVC, XTemplate) {
           });
           break;
       }
+
+      var paths = self.model.get('id'),
+          query = self.model.makeQuery();
+
+      MVC.Router.navigate('/api/' + paths + '?p=' + query);
     }
   }, {
     ATTRS: {
