@@ -60,8 +60,23 @@
 
       </div>
       <aside id="J_Side" class="side">
-        <nav id="J_Sidebar" class="sidebar"></nav>
+
+        <!--S sidebar -->
+        <nav class="sidebar">
+          <div class="sidebar-hd">
+            <div class="search">
+              <input value="" placeholder="Search" />
+              <label class="icon-search" ></label>
+            </div>
+          </div>
+          <div id="J_SidebarBd" class="sidebar-bd"></div>
+        </nav>
+        <!--E sidebar -->
+
+        <!--S config -->
         <div id="J_Config" class="config"></div>
+        <!--S config -->
+
       </aside>
     </div>
 

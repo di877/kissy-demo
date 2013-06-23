@@ -4,7 +4,7 @@
  * @version 1.0
  */
 
-KISSY.add('demo/router', function(S, MVC, SidebarView, ApiView, ApiCollection) {
+KISSY.add('demo/router', function(S, MVC, ApisView, ApiCollection) {
 
   /**
    * Route
@@ -13,22 +13,21 @@ KISSY.add('demo/router', function(S, MVC, SidebarView, ApiView, ApiCollection) {
     var self = this;
 
     Router.superclass.constructor.apply(self, arguments);
-    self.sidebarView   = new SidebarView().render();
-    self.apiView       = new ApiView({api: new ApiCollection().load()});
+    self.apiCollection = new ApiCollection().load();
+    self.apisView      = new ApisView({models: self.apiCollection}).render();
   };
 
   S.extend(Router, MVC.Router, {
     index: function() {
       MVC.Router.navigate('/api/core');
     },
-    api  : function(path) {
-      var self = this,
-          id   = path.id;
 
-        if (id) {
-          self.sidebarView.switch(id);
-          self.apiView.switch(id);
-        }
+    api  : function(path) {
+      var self  = this,
+          id    = path.id,
+          index = id === 'core' ? 0 : 1;
+
+      self.apisView.switch(index);
     }
   }, {
     /**
@@ -48,6 +47,6 @@ KISSY.add('demo/router', function(S, MVC, SidebarView, ApiView, ApiCollection) {
 
 }, {
 
-  requires: ['mvc', 'demo/SidebarView', 'demo/ApiView', 'demo/ApiCollection']
+  requires: ['mvc', 'demo/ApisView', 'demo/ApiCollection']
 
 });
