@@ -23,6 +23,7 @@ KISSY.add('demo/ApisView', function(S, MVC, ApiView) {
     var self = this;
 
     ApisView.superclass.constructor.apply(this, arguments);
+    self.$el    = self.get('el');
     self.models = self.get('models');
     self.models.on('afterModelsChange', function(e) {
       S.each(e.target.get('models'), function(model) {
@@ -34,13 +35,34 @@ KISSY.add('demo/ApisView', function(S, MVC, ApiView) {
 
   S.extend(ApisView, MVC.View, {
     render: function() {
-      var self = this,
-          $el  = self.get('el'),
-          winH = $(window).height();
+      var self = this;
 
-      $el.html(TPL_APIS.join(''));
-      $('#J_Api').css('height', winH - 144);
+      self.$el.html(TPL_APIS.join(''));
+      self.reset();
+
+      $(window).on('resize', function() {
+        self.reset();
+      });
+
       return self;
+    },
+
+    /**
+     * reset
+     */
+    reset : function() {
+      $('#J_Api').css('height', $(window).height() - 144);
+    },
+
+    /**
+     * tab
+     * @param {Object} e
+     */
+    tab   : function(e) {
+      var $target = $(e.target),
+          paths   = $target.attr('data-api-id');
+
+      MVC.Router.navigate('/api/' + paths);
     },
 
     /**
@@ -49,22 +71,15 @@ KISSY.add('demo/ApisView', function(S, MVC, ApiView) {
      */
     switch: function(index) {
       var self = this,
-          $el  = self.get('el');
+        $el  = self.get('el');
 
       $el.all('a.J_Tab')
-         .item(index).addClass('current')
-         .siblings().removeClass('current');
+        .item(index).addClass('current')
+        .siblings().removeClass('current');
 
       $el.all('ul.J_Modules')
         .item(index).show()
         .siblings().hide();
-    },
-
-    tab   : function(e) {
-      var $target = $(e.target),
-          paths   = $target.attr('data-api-id');
-
-      MVC.Router.navigate('/api/' + paths);
     }
   }, {
     ATTRS: {
