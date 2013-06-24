@@ -4,7 +4,9 @@
  * @version 1.0
  */
 
-KISSY.add('demo/router', function(S, MVC, ApisView, ApiCollection, DemosView, DemoCollection) {
+KISSY.add('demo/router', function(S, MVC, ApiCollection, ApisView, DemoModel, DemoCollection, DemosView, EditView) {
+
+  var $ = S.all;
 
   /**
    * Route
@@ -13,22 +15,29 @@ KISSY.add('demo/router', function(S, MVC, ApisView, ApiCollection, DemosView, De
     var self = this;
 
     Router.superclass.constructor.apply(self, arguments);
+
+    self.$List          = $('#J_List');
+    self.$Edit          = $('#J_Edit');
     self.apiCollection  = new ApiCollection().load();
     self.apisView       = new ApisView({models: self.apiCollection}).render();
     self.demoCollection = new DemoCollection();
     self.demosView      = new DemosView({models: self.demoCollection}).render();
+    self.editView       = new EditView({model: new DemoModel()});
   };
 
   S.extend(Router, MVC.Router, {
-    index: function() {
+    index : function() {
       MVC.Router.navigate('/api/core');
     },
 
-    api  : function(path, query) {
+    api   : function(path, query) {
       var self  = this,
           id    = path.id,
           p     = query.p;
           index = id === 'core' ? 0 : 1;
+
+      self.$List.show();
+      self.$Edit.hide();
 
       id && self.apisView.switch(index);
       p  && self.demoCollection.load({
@@ -39,6 +48,25 @@ KISSY.add('demo/router', function(S, MVC, ApisView, ApiCollection, DemosView, De
           self.demosView.setTitle(p);
         }
       });
+    },
+
+    detail: function(path) {
+      var self = this,
+          id   = path.id,
+          demo = self.demoCollection.getById(id);
+
+      self.$List.hide();
+      self.$Edit.show();
+
+      if (demo) {
+        self.editView.get('model').set(demo.toJSON());
+      } else {
+        self.editView.get('model').load({
+          data: {
+            id: id
+          }
+        });
+      }
     }
   }, {
     /**
@@ -47,8 +75,9 @@ KISSY.add('demo/router', function(S, MVC, ApisView, ApiCollection, DemosView, De
     ATTRS: {
       routes: {
         value: {
-          ''        : 'index',
-          '/api/:id': 'api'
+          ''           : 'index',
+          '/api/:id'   : 'api',
+          '/detail/:id': 'detail'
         }
       }
     }
@@ -58,6 +87,6 @@ KISSY.add('demo/router', function(S, MVC, ApisView, ApiCollection, DemosView, De
 
 }, {
 
-  requires: ['mvc', 'demo/ApisView', 'demo/ApiCollection', 'demo/DemosView', 'demo/DemoCollection']
+  requires: ['mvc', 'demo/ApiCollection', 'demo/ApisView', 'demo/DemoModel', 'demo/DemoCollection', 'demo/DemosView', 'demo/EditView']
 
 });

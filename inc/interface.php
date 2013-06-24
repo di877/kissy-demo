@@ -137,25 +137,17 @@ function delDemo($id){
 	
 }
 
-//demo详情 
+// 获取 DEMO Detail
 function demoDetail($id){
 	global $db;
-	
-	if($id==""){
-		return Response(true,"没有demo对应的id",null);
-	}
 
-	$demo = $db->getRow("SELECT * from demo where id='{$id}'");
-	
-	if($demo){
-		return Response(true,"获取任务详情成功",$demo);
-	}else{
-		return Response(false,"获取任务详情失败",null);
-	}
+    $result = $db -> getRow("SELECT * from demo where id='{$id}'");
+
+    return $result;
 }
 
-// 获取某个分类下的 DEMO
-function demoList($p){
+// 获取 DEMO List
+function demoList($p) {
 	global $db;
 
     $result = $db -> getAll("SELECT * from demo where module='{$p}'");

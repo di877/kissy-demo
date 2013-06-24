@@ -109,6 +109,9 @@ body
   width: 100%
   overflow: hidden
 
+.edit
+  display: none
+
 .cont, .side
   +float-right
 
@@ -140,7 +143,7 @@ body
     .main-bd
       +pie-clearfix()
 
-  .list
+  .demos
 
     .demo
       +float-left
@@ -152,26 +155,30 @@ body
       +border-radius(5px)
 
     .demo-bd
+      position: relative
       margin-bottom: 10px
       width: 350px
       height: 210px
       background: #FFFFFF
       +border-radius(5px)
 
+      .demo-link
+        position: absolute
+        top: 0
+        left: 0
+        width: 350px
+        height: 250px
+
     .demo-ft
       text-indent: 10px
       height: 30px
       line-height: 30px
+      color: $COLOR_HIGHLIGHT
       +border-radius(5px)
       background: $COLOR_TURQUOISE
       overflow: hidden
 
-      a
-        color: $COLOR_LIGHT_LINK
-
-
   .code
-    display: none
 
     .main-bd
       height: 600px
@@ -252,6 +259,7 @@ body
   margin-right: -300px
   padding: 20px 19px 20px 20px
   width: 260px
+  height: 100%
   border-right: 1px solid $COLOR_SILVER
   background: $COLOR_CLOUDS
 
@@ -350,10 +358,9 @@ body
           .entrie-desc
             color: $COLOR_HIGHLIGHT
 
-  .config
-    display: none
+  .info
 
-    .config-hd
+    .info-hd
 
       h2
         margin-bottom: 20px
@@ -366,7 +373,7 @@ body
         border-bottom: 1px solid $COLOR_DEFAULT_BORDER
         overflow: hidden
 
-    .config-bd
+    .info-bd
 
       li
         position: relative

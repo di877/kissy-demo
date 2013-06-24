@@ -7,70 +7,82 @@
   </head>
   <body>
     <div class="wrap">
+
       <header class="head">
         <div id="J_Tips" class="tips"></div>
       </header>
-      <div id="J_Cont" class="cont">
 
-        <!--S list -->
-        <article id="J_List" class="main list"></article>
-        <!--E list -->
+      <div id="J_List" class="list">
 
-        <!--S code -->
-        <article id="J_Code" class="main code">
-          <header id="J_CodeHd" class="main-hd">
-            <a href="javascript:;" id="J_Back" class="back">← 返回</a>
-            <a href="javascript:;" id="J_Commit" class="btn"><i class="icon-pencil"></i>提交</a>
-            <a href="javascript:;" id="J_Update" class="btn"><i class="icon-refresh"></i>更新</a>
-            <a href="javascript:;" id="J_Debug" class="btn"><i class="icon-check"></i>预览</a>
-          </header>
-          <div id="J_CodeBd" class="main-bd">
-            <fieldset class="column left">
-              <div class="J_EditorWrap editor-wrap top">
-                <span class="J_EditorLabel editor-label">HTML<i class="J_EditorResize icon-fullscreen" data-editor="Html" data-screen="small"></i></span>
-                <div id="J_Html" class="editor"></div>
+        <!--S cont -->
+        <div class="cont">
+          <article id="J_Demos" class="main demos"></article>
+        </div>
+        <!--E cont -->
+
+        <!--S side -->
+        <div class="side">
+          <nav class="sidebar">
+            <div id="J_SidebarHd" class="sidebar-hd">
+              <div class="search">
+                <input value="" placeholder="Search" />
+                <label class="icon-search" ></label>
               </div>
-              <div class="J_EditorWrap editor-wrap bottom">
-                <span class="J_EditorLabel editor-label">JavaScript<i class="J_EditorResize icon-fullscreen" data-editor="Js" data-screen="small"></i></span>
-                <div id="J_Js" class="editor"></div>
-              </div>
-            </fieldset>
-            <fieldset class="column right">
-              <div class="J_EditorWrap editor-wrap top">
-                <span class="J_EditorLabel editor-label">CSS<i class="J_EditorResize icon-fullscreen" data-editor="Css" data-screen="small"></i></span>
-                <div id="J_Css" class="editor"></div>
-              </div>
-              <div class="J_EditorWrap editor-wrap bottom">
-                <span class="J_EditorLabel editor-label">预览<i class="J_EditorResize icon-fullscreen" data-editor="Preview" data-screen="small"></i></span>
-                <div id="J_Preview" class="editor">
-                  <iframe id="J_PreviewIframe" width="100%" height="100%"></iframe>
-                </div>
-              </div>
-            </fieldset>
-          </div>
-        </article>
-        <!--E code -->
+            </div>
+            <div id="J_SidebarBd" class="sidebar-bd"></div>
+          </nav>
+        </div>
+        <!--E side -->
 
       </div>
-      <aside id="J_Side" class="side">
 
-        <!--S sidebar -->
-        <nav class="sidebar">
-          <div class="sidebar-hd">
-            <div class="search">
-              <input value="" placeholder="Search" />
-              <label class="icon-search" ></label>
+      <div id="J_Edit" class="edit">
+
+        <!--S cont -->
+        <div class="cont">
+          <article id="J_Code" class="main code">
+            <header id="J_CodeHd" class="main-hd">
+              <a href="javascript:;" id="J_Back" class="back">← 返回</a>
+              <a href="javascript:;" id="J_Commit" class="btn"><i class="icon-pencil"></i>提交</a>
+              <a href="javascript:;" id="J_Update" class="btn"><i class="icon-refresh"></i>更新</a>
+              <a href="javascript:;" id="J_Debug" class="btn"><i class="icon-check"></i>预览</a>
+            </header>
+            <div id="J_CodeBd" class="main-bd">
+              <fieldset class="column left">
+                <div class="J_EditorWrap editor-wrap top">
+                  <span class="J_EditorLabel editor-label">HTML<i class="J_EditorResize icon-fullscreen" data-editor="Html" data-screen="small"></i></span>
+                  <div id="J_Html" class="editor"></div>
+                </div>
+                <div class="J_EditorWrap editor-wrap bottom">
+                  <span class="J_EditorLabel editor-label">JavaScript<i class="J_EditorResize icon-fullscreen" data-editor="Js" data-screen="small"></i></span>
+                  <div id="J_Js" class="editor"></div>
+                </div>
+              </fieldset>
+              <fieldset class="column right">
+                <div class="J_EditorWrap editor-wrap top">
+                  <span class="J_EditorLabel editor-label">CSS<i class="J_EditorResize icon-fullscreen" data-editor="Css" data-screen="small"></i></span>
+                  <div id="J_Css" class="editor"></div>
+                </div>
+                <div class="J_EditorWrap editor-wrap bottom">
+                  <span class="J_EditorLabel editor-label">预览<i class="J_EditorResize icon-fullscreen" data-editor="Preview" data-screen="small"></i></span>
+                  <div id="J_Preview" class="editor">
+                    <iframe id="J_PreviewIframe" width="100%" height="100%"></iframe>
+                  </div>
+                </div>
+              </fieldset>
             </div>
-          </div>
-          <div id="J_SidebarBd" class="sidebar-bd"></div>
-        </nav>
-        <!--E sidebar -->
+          </article>
+        </div>
+        <!--E cont -->
 
-        <!--S config -->
-        <div id="J_Config" class="config"></div>
-        <!--S config -->
+        <!--S side -->
+        <div class="side">
+          <div id="J_Info" class="info"></div>
+        </div>
+        <!--E side -->
 
-      </aside>
+      </div>
+
     </div>
 
     <?php

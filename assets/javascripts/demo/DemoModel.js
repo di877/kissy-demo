@@ -13,7 +13,13 @@ KISSY.add('demo/DemoModel', function(S, mvc) {
     DemoModel.superclass.constructor.apply(this, arguments);
   };
 
-  S.extend(DemoModel, mvc.Model);
+  S.extend(DemoModel, mvc.Model, {}, {
+    ATTRS: {
+      url: {
+        value: 'act/detail.php'
+      }
+    }
+  });
 
   return DemoModel;
 
