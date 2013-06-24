@@ -10,8 +10,8 @@ KISSY.add('demo/ApisView', function(S, MVC, ApiView) {
 
   var TPL_APIS = [
     '<div class="tab">',
-      '<a href="javascript:;" class="J_Tab" title="核心模块集" data-api-id="core">core</a>',
-      '<a href="javascript:;" class="J_Tab" title="扩展模块集" data-api-id="components">components</a>',
+      '<a href="#!/api/core" class="J_Tab" title="核心模块集">core</a>',
+      '<a href="#!/api/components" class="J_Tab" title="扩展模块集">components</a>',
     '</div>',
     '<div id="J_Api" class="api"></div>'
   ];
@@ -48,25 +48,14 @@ KISSY.add('demo/ApisView', function(S, MVC, ApiView) {
     },
 
     /**
-     * reset
+     * 重置高度
      */
     reset : function() {
       $('#J_Api').css('height', $(window).height() - 144);
     },
 
     /**
-     * tab
-     * @param {Object} e
-     */
-    tab   : function(e) {
-      var $target = $(e.target),
-          paths   = $target.attr('data-api-id');
-
-      MVC.Router.navigate('/api/' + paths);
-    },
-
-    /**
-     * switch
+     * TAB切换
      * @param {Number} index
      */
     switch: function(index) {
@@ -85,13 +74,6 @@ KISSY.add('demo/ApisView', function(S, MVC, ApiView) {
     ATTRS: {
       el: {
         value: '#J_SidebarBd'
-      },
-      events: {
-        value: {
-          '.J_Tab': {
-            'click': 'tab'
-          }
-        }
       }
     }
   });
