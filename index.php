@@ -13,14 +13,7 @@
       <div id="J_Cont" class="cont">
 
         <!--S list -->
-        <article id="J_List" class="main list">
-          <header id="J_ListHd" class="main-hd">
-            <a href="javascript:;" id="J_Add" class="add">+ 添加</a>
-            <h1></h1>
-          </header>
-          <div id="J_ListBd" class="main-bd">
-          </div>
-        </article>
+        <article id="J_List" class="main list"></article>
         <!--E list -->
 
         <!--S code -->

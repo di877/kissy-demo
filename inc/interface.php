@@ -1,7 +1,7 @@
 <?php
 include("conn.php");
 
-function Response($status,$msg,$data,$code=''){
+function Response($status, $msg, $data, $code=''){
 	$result = array(
 		"status" => $status,
 		"message" => $msg,
@@ -154,19 +154,15 @@ function demoDetail($id){
 	}
 }
 
-//获取某个分类下的demo
-function demoList($module){
+// 获取某个分类下的 DEMO
+function demoList($p){
 	global $db;
-	
-	if($module==""){
-		return Response(true,"请输入你要查找的路径",null);
-	}
 
-	$list = $db->getAll("SELECT * from demo where module='{$module}'");
-	
-	if($list){
-		return Response(true,"获取demo成功",$list);
-	}else{
-		return Response(false,"获取demo失败",null);
-	}
+    $result = $db -> getAll("SELECT * from demo where module='{$p}'");
+
+    if (!$result) {
+      $result = array();
+    }
+
+    return $result;
 }

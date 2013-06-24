@@ -4,7 +4,7 @@
  * @version 1.0
  */
 
-KISSY.add('demo/router', function(S, MVC, ApisView, ApiCollection) {
+KISSY.add('demo/router', function(S, MVC, ApisView, ApiCollection, DemosView, DemoCollection) {
 
   /**
    * Route
@@ -13,8 +13,10 @@ KISSY.add('demo/router', function(S, MVC, ApisView, ApiCollection) {
     var self = this;
 
     Router.superclass.constructor.apply(self, arguments);
-    self.apiCollection = new ApiCollection().load();
-    self.apisView      = new ApisView({models: self.apiCollection}).render();
+    self.apiCollection  = new ApiCollection().load();
+    self.apisView       = new ApisView({models: self.apiCollection}).render();
+    self.demoCollection = new DemoCollection();
+    self.demoView       = new DemosView({models: self.demoCollection});
   };
 
   S.extend(Router, MVC.Router, {
@@ -28,7 +30,12 @@ KISSY.add('demo/router', function(S, MVC, ApisView, ApiCollection) {
           p     = query.p;
           index = id === 'core' ? 0 : 1;
 
-      self.apisView.switch(index);
+      id && self.apisView.switch(index);
+      p  && self.demoCollection.load({
+        data: {
+          p: p
+        }
+      });
     }
   }, {
     /**
@@ -48,6 +55,6 @@ KISSY.add('demo/router', function(S, MVC, ApisView, ApiCollection) {
 
 }, {
 
-  requires: ['mvc', 'demo/ApisView', 'demo/ApiCollection']
+  requires: ['mvc', 'demo/ApisView', 'demo/ApiCollection', 'demo/DemosView', 'demo/DemoCollection']
 
 });
