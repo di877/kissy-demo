@@ -16,7 +16,7 @@ KISSY.add('demo/router', function(S, MVC, ApisView, ApiCollection, DemosView, De
     self.apiCollection  = new ApiCollection().load();
     self.apisView       = new ApisView({models: self.apiCollection}).render();
     self.demoCollection = new DemoCollection();
-    self.demoView       = new DemosView({models: self.demoCollection});
+    self.demosView      = new DemosView({models: self.demoCollection}).render();
   };
 
   S.extend(Router, MVC.Router, {
@@ -32,8 +32,11 @@ KISSY.add('demo/router', function(S, MVC, ApisView, ApiCollection, DemosView, De
 
       id && self.apisView.switch(index);
       p  && self.demoCollection.load({
-        data: {
+        data   : {
           p: p
+        },
+        success: function() {
+          self.demosView.setTitle(p);
         }
       });
     }
