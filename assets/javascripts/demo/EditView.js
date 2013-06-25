@@ -171,11 +171,48 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate) {
       self.iframe.open();
       self.iframe.write(code);
       self.iframe.close();
+    },
+
+    /**
+     * 获取模型数据
+     * @return {Object}
+     */
+    getDemoModel: function() {
+      var self = this;
+
+      return S.merge(self.getEditorVal(), {
+        author: $('#J_Author').val(),
+        intro : $('#J_Intro').val()
+      });
+    },
+
+
+    /**
+     * 更新代码
+     */
+    update: function() {
+      var self = this;
+
+      self.model.set(self.getDemoModel(), {
+        silent: true
+      });
+
+      self.model.save({
+        success: function(data) {
+        }
+      });
     }
   }, {
     ATTRS: {
-      el: {
+      el    : {
         value: '#J_Edit'
+      },
+      events: {
+        value: {
+          '#J_Update': {
+            click: 'update'
+          }
+        }
       }
     }
   });
