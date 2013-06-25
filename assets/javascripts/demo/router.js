@@ -22,9 +22,10 @@ KISSY.add('demo/router', function(S, MVC, ApiCollection, ApisView, DemoModel, De
     self.$update        = $('#J_Update');
     self.apiCollection  = new ApiCollection().load();
     self.apisView       = new ApisView({models: self.apiCollection}).render();
+    self.demoModel      = new DemoModel();
     self.demoCollection = new DemoCollection();
     self.demosView      = new DemosView({models: self.demoCollection}).render();
-    self.editView       = new EditView({model: new DemoModel()});
+    self.editView       = new EditView({model: self.demoModel});
   };
 
   S.extend(Router, MVC.Router, {
@@ -52,7 +53,25 @@ KISSY.add('demo/router', function(S, MVC, ApiCollection, ApisView, DemoModel, De
       });
     },
 
-    add   : function() {
+    add   : function(path, query) {
+      var self = this,
+          p    = query.p;
+
+      self.$list.hide();
+      self.$edit.show();
+      self.$commit.show();
+      self.$update.hide();
+
+      self.demoModel.set({
+        id     : '',
+        module : p,
+        author : '',
+        intro  : '',
+        version: '1.3.0',
+        html   : '',
+        js     : '',
+        css    : ''
+      });
     },
 
     detail: function(path) {
@@ -66,9 +85,9 @@ KISSY.add('demo/router', function(S, MVC, ApiCollection, ApisView, DemoModel, De
       self.$update.show();
 
       if (demo) {
-        self.editView.get('model').set(demo.toJSON());
+        self.demoModel.set(demo.toJSON());
       } else {
-        self.editView.get('model').load({
+        self.demoModel.load({
           data: {
             id: id
           }

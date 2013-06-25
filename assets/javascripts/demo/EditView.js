@@ -186,11 +186,10 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate) {
       });
     },
 
-
     /**
-     * 更新代码
+     * 提交 / 更新代码
      */
-    update: function() {
+    save: function() {
       var self = this;
 
       self.model.set(self.getDemoModel(), {
@@ -209,8 +208,11 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate) {
       },
       events: {
         value: {
+          '#J_Commit': {
+            click: 'save'
+          },
           '#J_Update': {
-            click: 'update'
+            click: 'save'
           }
         }
       }
