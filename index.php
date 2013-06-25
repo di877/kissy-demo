@@ -16,7 +16,10 @@
 
         <!--S cont -->
         <div class="cont">
-          <article id="J_Demos" class="main demos"></article>
+          <article id="J_Demos" class="main demos">
+            <header id="J_DemosHd" class="main-hd"></header>
+            <div id="J_DemosBd" class="main-bd"></div>
+          </article>
         </div>
         <!--E cont -->
 
@@ -42,7 +45,7 @@
         <div class="cont">
           <article class="main code">
             <header class="main-hd">
-              <a href="javascript:window.history.go(-1);" id="J_Back" class="back">← 返回</a>
+              <a href="javascript:window.history.go(-1);" class="back">← 返回</a>
               <a href="javascript:;" id="J_Commit" class="btn"><i class="icon-pencil"></i>提交</a>
               <a href="javascript:;" id="J_Update" class="btn"><i class="icon-refresh"></i>更新</a>
               <a href="javascript:;" id="J_Debug" class="btn"><i class="icon-check"></i>预览</a>

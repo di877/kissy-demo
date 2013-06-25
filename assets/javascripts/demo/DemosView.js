@@ -8,15 +8,12 @@ KISSY.add('demo/DemosView', function(S, MVC, XTemplate) {
 
   var $ = S.all;
 
-  var TPL_LIST = [
-    '<header id="J_DemosHd" class="main-hd">',
-      '<a href="javascript:;" class="add">+ 添加</a>',
-      '<h1></h1>',
-    '</header>',
-    '<div id="J_DemosBd" class="main-bd"></div>'
-  ];
+  var TPL_DEMOS_HD = new XTemplate([
+    '<a href="#!/add/{{id}}?p={{p}}" class="add">+ 添加</a>',
+    '<h1>{{p}}</h1>'
+  ].join(''));
 
-  var TPL_DEMOS = new XTemplate([
+  var TPL_DEMOS_BD = new XTemplate([
     '<ul>',
       '{{#demos}}',
         '<li class="demo">',
@@ -36,32 +33,23 @@ KISSY.add('demo/DemosView', function(S, MVC, XTemplate) {
     var self = this;
 
     DemosView.superclass.constructor.apply(this, arguments);
-    self.$el    = self.get('el');
-    self.models = self.get('models');
-    self.get('models').on('afterModelsChange', function() {
-      $('#J_DemosBd').html(TPL_DEMOS.render({
+    self.$el      = self.get('el');
+    self.models   = self.get('models');
+    self.$demosHd = $('#J_DemosHd');
+    self.$demosBd = $('#J_DemosBd');
+
+    self.models.on('afterModelsChange', function() {
+      self.$demosHd.html(TPL_DEMOS_HD.render({
+        id: self.models.get('id'),
+        p : self.models.get('p')
+      }));
+      self.$demosBd.html(TPL_DEMOS_BD.render({
         demos: self.models.toJSON()
-      }))
+      }));
     });
   };
 
-  S.extend(DemosView, MVC.View, {
-    render: function() {
-      var self = this;
-
-      self.$el.html(TPL_LIST.join(''));
-      return self;
-    },
-
-    /**
-     * 设置标题
-     */
-    setTitle: function(title) {
-      var self = this;
-
-      self.$el.one('h1').html(title + ' Demo');
-    }
-  }, {
+  S.extend(DemosView, MVC.View, {}, {
     ATTRS: {
       el: {
         value: '#J_Demos'

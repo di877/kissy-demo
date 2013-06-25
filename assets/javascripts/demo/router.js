@@ -42,14 +42,17 @@ KISSY.add('demo/router', function(S, MVC, ApiCollection, ApisView, DemoModel, De
       self.$edit.hide();
 
       id && self.apisView.switch(index);
-      p  && self.demoCollection.load({
-        data   : {
+      p  && self.demoCollection.set({
+        id: id,
+        p : p
+      }).load({
+        data : {
           p: p
-        },
-        success: function() {
-          self.demosView.setTitle(p);
         }
       });
+    },
+
+    add   : function() {
     },
 
     detail: function(path) {
@@ -81,6 +84,7 @@ KISSY.add('demo/router', function(S, MVC, ApiCollection, ApisView, DemoModel, De
         value: {
           ''           : 'index',
           '/api/:id'   : 'api',
+          '/add/:id'   : 'add',
           '/detail/:id': 'detail'
         }
       }
