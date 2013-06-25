@@ -16,8 +16,10 @@ KISSY.add('demo/router', function(S, MVC, ApiCollection, ApisView, DemoModel, De
 
     Router.superclass.constructor.apply(self, arguments);
 
-    self.$List          = $('#J_List');
-    self.$Edit          = $('#J_Edit');
+    self.$list          = $('#J_List');
+    self.$edit          = $('#J_Edit');
+    self.$commit        = $('#J_Commit');
+    self.$update        = $('#J_Update');
     self.apiCollection  = new ApiCollection().load();
     self.apisView       = new ApisView({models: self.apiCollection}).render();
     self.demoCollection = new DemoCollection();
@@ -36,8 +38,8 @@ KISSY.add('demo/router', function(S, MVC, ApiCollection, ApisView, DemoModel, De
           p     = query.p;
           index = id === 'core' ? 0 : 1;
 
-      self.$List.show();
-      self.$Edit.hide();
+      self.$list.show();
+      self.$edit.hide();
 
       id && self.apisView.switch(index);
       p  && self.demoCollection.load({
@@ -55,8 +57,10 @@ KISSY.add('demo/router', function(S, MVC, ApiCollection, ApisView, DemoModel, De
           id   = path.id,
           demo = self.demoCollection.getById(id);
 
-      self.$List.hide();
-      self.$Edit.show();
+      self.$list.hide();
+      self.$edit.show();
+      self.$commit.hide();
+      self.$update.show();
 
       if (demo) {
         self.editView.get('model').set(demo.toJSON());

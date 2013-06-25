@@ -28,6 +28,29 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate) {
     '{{/demo}}'
   ].join(''));
 
+  var TPL_CODE = new XTemplate([
+    '<!DOCTYPE html>\r\n',
+    '<html>\r\n',
+      '<head>\r\n',
+        '<meta charset="utf-8" />\r\n',
+        '<title>{{module}}</title>\r\n',
+        '<style>\r\n',
+          '{{{css}}}\r\n',
+        '</style>\r\n',
+      '</head>\r\n',
+      '<body>\r\n',
+        '{{{html}}}\r\n',
+        '<script src="http://a.tbcdn.cn/s/kissy/1.3.0/seed-min.js" data-config="{combine:true}"></script>\r\n',
+        '<script>\r\n',
+          'try {\r\n',
+            '{{{js}}}\r\n',
+          '} catch(e) {\r\n',
+          '}\r\n',
+        '</script>\r\n',
+      '</body>\r\n',
+    '</html>'
+  ].join(''));
+
   /**
    * EditView
    */
@@ -36,9 +59,10 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate) {
 
     EditView.superclass.constructor.apply(this, arguments);
 
-    self.$el   = self.get('el');
-    self.model = self.get('model');
-    self.$info = $('#J_Info');
+    self.$el    = self.get('el');
+    self.model  = self.get('model');
+    self.$info  = $('#J_Info');
+    self.iframe = $('#J_PreviewIframe')[0].contentWindow.document;
 
     self.createEditor();
 
@@ -69,14 +93,33 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate) {
        */
       var aceEditor = function(editor, mode) {
         var editor = ace.edit(editor[0]);
+
         editor.setTheme("ace/theme/dreamweaver");
         editor.getSession().setMode("ace/mode/" + mode);
+        editor.on('change', function() {
+          self.setDebugCode();
+        });
+
         return editor;
       };
 
       self.Html = aceEditor($('#J_Html'), 'html');
       self.Css  = aceEditor($('#J_Css'), 'css');
       self.Js   = aceEditor($('#J_Js'), 'javascript');
+    },
+
+    /**
+     * 编辑器取值
+     * @return {Object}
+     */
+    getEditorVal: function() {
+      var self = this;
+
+      return {
+        html: self.Html.getValue(),
+        css : self.Css.getValue(),
+        js  : self.Js.getValue()
+      };
     },
 
     /**
@@ -110,23 +153,29 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate) {
     },
 
     /**
-     * 编辑器取值
-     * @return {Object}
+     * 获取调试代码
+     * @param  {Object} data
+     * @return {String}
      */
-    getEditorVal: function() {
-      var self = this;
+    getDebugCode: function(data) {
+      return TPL_CODE.render(data);
+    },
 
-      return {
-        html: self.Html.getValue(),
-        css : self.Css.getValue(),
-        js  : self.Js.getValue()
-      };
+    /**
+     * 设置调试代码
+     */
+    setDebugCode: function() {
+      var self = this,
+          code = self.getDebugCode(self.getEditorVal());
+
+      self.iframe.open();
+      self.iframe.write(code);
+      self.iframe.close();
     }
-
   }, {
     ATTRS: {
       el: {
-        value: '<ul></ul>'
+        value: '#J_Edit'
       }
     }
   });
