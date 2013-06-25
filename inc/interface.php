@@ -33,21 +33,21 @@ function getID() {
 	}
 }
 
-// 获取 DEMO List
-function demoList($p) {
+// 获取 DEMO 列表
+function getDemos($p) {
   global $db;
 
   $result = $db -> getAll("SELECT * from demo where module='{$p}'");
 
-  if (!$result) {
-    $result = array();
+  if ($result) {
+    return response(true, "获取成功", $result);
+  } else {
+    return response(true, "获取成功", array());
   }
-
-  return $result;
 }
 
-// 获取 DEMO Detail
-function demoDetail($id) {
+// 获取 DEMO 详情
+function getDemo($id) {
   global $db;
 
   $result = $db -> getRow("SELECT * from demo where id='{$id}'");
@@ -55,32 +55,40 @@ function demoDetail($id) {
   if ($result) {
     return response(true, "获取成功", $result);
   } else {
-    return response(false, "获取失败", $result);
+    return response(false, "获取失败", null);
   }
 }
 
 // 添加 DEMO
-function addDemo($module, $intro, $version, $html, $js, $css, $author) {
+function addDemo($model) {
   global $db;
 
+  $module  = $model -> module;
+  $author  = $model -> author;
+  $intro   = $model -> intro;
+  $version = $model -> version;
+  $html    = $model -> html;
+  $js      = $model -> js;
+  $css     = $model -> css;
+
   if ($module == "") {
-    return response(false, "请填写 DEMO 模块", null);
+    return response(false, "请填写 DEMO 模块", $model);
   }
 
   if ($intro == "") {
-    return response(false, "请填写 DEMO 简介", null);
+    return response(false, "请填写 DEMO 简介", $model);
   }
 
   if (!preg_match ("/^\d{1}\.\d{1}\.\d{1}$/", $version)) {
-    return response(false, "请填写 DEMO 版本", null);
+    return response(false, "请填写 DEMO 版本", $model);
   }
 
   if ($html == "") {
-    return response(false, "请填写 DEMO 内容", null);
+    return response(false, "请填写 DEMO 内容", $model);
   }
 
   if ($author == "") {
-    return response(false, "请填写您的花名", null);
+    return response(false, "请填写您的花名", $model);
   }
 
   $result = $db->autoExecute("demo", array(
@@ -95,24 +103,43 @@ function addDemo($module, $intro, $version, $html, $js, $css, $author) {
   ), 1);
 
   if ($result) {
-    return response(true, "添加成功", null);
+    return response(true, "添加成功", $result);
   } else {
-    return response(true, "添加失败", null);
+    return response(false, "添加失败", $model);
+  }
+}
+
+// 删除 DEMO
+function delDemo ($model) {
+  global $db;
+
+  $id = $model -> id;
+
+  if ($id == "") {
+    return response(true, "ID 错误", null);
+  }
+
+  $result = $db -> execute("delete from demo WHERE id = '{$id}' ");
+
+  if ($result) {
+    return response(true, "删除成功", null);
+  } else {
+    return response(false, "删除失败", null);
   }
 }
 
 // 修改 DEMO
-function demoUpdate($model) {
+function updateDemo($model) {
   global $db;
 
   $id      = $model -> id;
   $module  = $model -> module;
+  $author  = $model -> author;
   $intro   = $model -> intro;
   $version = $model -> version;
   $html    = $model -> html;
   $js      = $model -> js;
   $css     = $model -> css;
-  $author  = $model -> author;
 
   if ($id == "") {
     return response(false, "请填写 DEMO ID", $model);
@@ -152,22 +179,5 @@ function demoUpdate($model) {
     return response(true, "修改成功", $model);
   } else {
     return response(true, "修改成功", $model);
-  }
-}
-
-// 删除 DEMO
-function delDemo($id) {
-  global $db;
-
-  if ($id == "") {
-    return response(true, "要删除的ID错误", null);
-  }
-
-  $result = $db->execute("delete from demo WHERE id = '{$id}' ");
-
-  if($result){
-    return response(true, "删除成功", null);
-  } else {
-    return response(false, "删除失败", null);
   }
 }

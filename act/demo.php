@@ -6,13 +6,20 @@
 
   if ($method === 'read') {
     $id     = $_GET["id"];
-    $result = demoDetail($id);
+    $result = getDemo($id);
+  }
+
+  if ($method === 'create') {
+    $model  = json_decode($_POST['model']);
+    $result = addDemo($model);
   }
 
   if ($method === 'update') {
     $model  = json_decode($_POST['model']);
-    $result = demoUpdate($model);
+    $result = updateDemo($model);
   }
+
+
 
   header('Content-type:text/json');
   echo json_encode($result);
