@@ -15,8 +15,13 @@ KISSY.add('demo/DemoModel', function(S, mvc) {
 
   S.extend(DemoModel, mvc.Model, {}, {
     ATTRS: {
-      url: {
+      url  : {
         value: 'act/detail.php'
+      },
+      parse: {
+        value: function(res) {
+          return res.data
+        }
       }
     }
   });
