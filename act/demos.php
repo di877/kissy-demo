@@ -2,8 +2,8 @@
 
   include("../inc/interface.php");
 
-  $id = $_POST["id"];
-  $result = demoDetail($id);
+  $p      = $_GET["p"];
+  $result = getDemos($p);
 
   header('Content-type:text/json');
   echo json_encode($result);
