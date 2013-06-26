@@ -112,7 +112,7 @@ function addDemo($model) {
 }
 
 // 删除 DEMO
-function delDemo ($model) {
+function delDemo($model) {
   global $db;
 
   $id = $model -> id;
@@ -130,7 +130,7 @@ function delDemo ($model) {
   }
 }
 
-// 修改 DEMO
+// 更新 DEMO
 function updateDemo($model) {
   global $db;
 
@@ -178,8 +178,8 @@ function updateDemo($model) {
   ), 2, "id='{$id}'");
 
   if ($result) {
-    return response(true, "修改成功", $model);
+    return response(true, "更新成功", $model);
   } else {
-    return response(true, "修改成功", $model);
+    return response(true, "更新成功", $model);
   }
 }
