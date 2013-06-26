@@ -1771,6 +1771,7 @@ body a:hover {
 }
 /* line 149, ../src/style.sass */
 .cont .demos .demo {
+  position: relative;
   display: inline;
   float: left;
   margin: 0 10px 10px 0;
@@ -1782,9 +1783,8 @@ body a:hover {
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 158, ../src/style.sass */
+/* line 159, ../src/style.sass */
 .cont .demos .demo-bd {
-  position: relative;
   margin-bottom: 10px;
   width: 350px;
   height: 210px;
@@ -1794,14 +1794,6 @@ body a:hover {
   border-radius: 5px;
 }
 /* line 166, ../src/style.sass */
-.cont .demos .demo-bd .demo-link {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 350px;
-  height: 250px;
-}
-/* line 173, ../src/style.sass */
 .cont .demos .demo-ft {
   text-indent: 10px;
   height: 30px;
@@ -1812,6 +1804,14 @@ body a:hover {
   border-radius: 5px;
   background: #1abc9c;
   overflow: hidden;
+}
+/* line 175, ../src/style.sass */
+.cont .demos .demo-link {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 350px;
+  height: 250px;
 }
 /* line 184, ../src/style.sass */
 .cont .code .main-hd {

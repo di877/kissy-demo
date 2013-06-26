@@ -17,10 +17,11 @@ KISSY.add('demo/DemosView', function(S, MVC, XTemplate) {
     '<ul>',
       '{{#demos}}',
         '<li class="demo">',
-          '<div class="demo-bd">' +
-            '<a class="demo-link" href="#!/detail/{{id}}"></a>',
+          '<div class="demo-bd">',
+            '<iframe src="./demo/{{id}}.html" allowtransparency="true" frameborder="0" scrolling="no" style=""></iframe>',
           '</div>',
           '<div class="demo-ft">{{intro}}</div>',
+          '<a class="demo-link" href="#!/detail/{{id}}"></a>',
         '</li>',
       '{{/demos}}',
     '</ul>'
