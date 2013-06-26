@@ -63,6 +63,7 @@ function getDemo($id) {
 function addDemo($model) {
   global $db;
 
+  $id      = getID();
   $module  = $model -> module;
   $author  = $model -> author;
   $intro   = $model -> intro;
@@ -91,8 +92,8 @@ function addDemo($model) {
     return response(false, "请填写您的花名", $model);
   }
 
-  $result = $db->autoExecute("demo", array(
-    "id"      => getID(),
+  $result = $db -> autoExecute("demo", array(
+    "id"      => $id,
     "module"  => $module,
     "intro"   => $intro,
     "version" => $version,
@@ -103,7 +104,8 @@ function addDemo($model) {
   ), 1);
 
   if ($result) {
-    return response(true, "添加成功", $result);
+    $model -> id = $id;
+    return response(true, "添加成功", $model);
   } else {
     return response(false, "添加失败", $model);
   }
