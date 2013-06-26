@@ -71,6 +71,9 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate, TipsModel, TipsView) {
 
     self.createEditor();
 
+    // 默认开启代码调试
+    self.set('debug', true);
+
     self.model.on('*Change', function() {
       var demo = self.model.toJSON();
 
@@ -116,7 +119,7 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate, TipsModel, TipsView) {
         editor.setTheme("ace/theme/dreamweaver");
         editor.getSession().setMode("ace/mode/" + mode);
         editor.on('change', function() {
-          self.setDebugCode();
+          self.get('debug') && self.setDebugCode();
         });
 
         return editor;
@@ -227,6 +230,37 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate, TipsModel, TipsView) {
     },
 
     /**
+     * 调试开关控制
+     */
+    debugHandler: function(e) {
+      var self = this,
+          target = $(e.currentTarget),
+          $icon  = target.one('i');
+
+      var checkIconClass = 'icon-check',
+          emptyIconClass = 'icon-check-empty';
+
+      if (self.get('debug')) {
+
+        $icon.removeClass(checkIconClass)
+             .addClass(emptyIconClass);
+
+        self.set('debug', false);
+
+      } else {
+
+        $icon.removeClass(emptyIconClass)
+             .addClass(checkIconClass);
+
+        self.set('debug', true);
+
+        // 开启时默认执行一次代码调试
+        self.setDebugCode();
+
+      }
+    },
+
+    /**
      * 标签显示控制
      */
     labelHandler: function(e) {
@@ -238,7 +272,7 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate, TipsModel, TipsView) {
     },
 
     /**
-     * 编辑器缩放
+     * 窗口缩放控制
      */
     editorResize: function(e) {
       var self   = this,
@@ -254,37 +288,38 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate, TipsModel, TipsView) {
       var fullIconClass  = 'icon-fullscreen',
           smallIconClass = 'icon-resize-small';
 
-    if (screen === 'small') {
+      if (screen === 'small') {
 
-      self.$code.addClass('full-screen');
+        self.$code.addClass('full-screen');
 
-      $icon.attr('data-screen', 'full')
-           .removeClass(fullIconClass)
-           .addClass(smallIconClass);
+        $icon.attr('data-screen', 'full')
+             .removeClass(fullIconClass)
+             .addClass(smallIconClass);
 
-      $editorWrap.css('height', '100%')
-                 .siblings().hide();
-
-      $editorColumn.css('width', '100%')
+        $editorWrap.css('height', '100%')
                    .siblings().hide();
 
-    } else {
+        $editorColumn.css('width', '100%')
+                     .siblings().hide();
 
-      self.$code.removeClass('full-screen');
+      } else {
 
-      $icon.attr('data-screen', 'small')
-           .removeClass(smallIconClass)
-           .addClass(fullIconClass);
+        self.$code.removeClass('full-screen');
 
-      $editorWrap.css('height', '50%')
-                 .siblings().show();
+        $icon.attr('data-screen', 'small')
+             .removeClass(smallIconClass)
+             .addClass(fullIconClass);
 
-      $editorColumn.css('width', '50%')
+        $editorWrap.css('height', '50%')
                    .siblings().show();
-    }
 
-    self[editor] && self[editor].resize();
-  }
+        $editorColumn.css('width', '50%')
+                     .siblings().show();
+
+      }
+
+      self[editor] && self[editor].resize();
+    }
   }, {
     ATTRS: {
       el    : {
@@ -297,6 +332,9 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate, TipsModel, TipsView) {
           },
           '#J_Update': {
             click: 'save'
+          },
+          '#J_Debug': {
+            click: 'debugHandler'
           },
           '.J_EditorWrap': {
             'mouseenter': 'labelHandler',
