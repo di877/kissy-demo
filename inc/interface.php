@@ -105,6 +105,7 @@ function addDemo($model) {
 
   if ($result) {
     $model -> id = $id;
+    saveDemo($model);
     return response(true, "添加成功", $model);
   } else {
     return response(false, "添加失败", $model);
@@ -178,8 +179,47 @@ function updateDemo($model) {
   ), 2, "id='{$id}'");
 
   if ($result) {
+    saveDemo($model);
     return response(true, "更新成功", $model);
   } else {
     return response(true, "更新成功", $model);
   }
+}
+
+// 保存 DEMO
+function saveDemo($model) {
+  $id     = $model -> id;
+  $module = $model -> module;
+  $html   = $model -> html;
+  $css    = $model -> css;
+  $js     = $model -> js;
+
+$html = <<<END
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>$module</title>
+    <style>
+      $css
+    </style>
+  </head>
+  <body>
+    $html
+    <script src="http://a.tbcdn.cn/s/kissy/1.3.0/seed-min.js" data-config="{combine:true}"></script>
+    <script>
+      try {
+        $js
+      } catch(e) {
+      }
+    </script>
+  </body>
+</html>
+END;
+
+  $dir = '../demo/'.$id.'.html';
+
+  $file = fopen($dir, 'w+');
+  fwrite($file, $html);
+  fclose($file);
 }

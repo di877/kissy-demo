@@ -147,6 +147,7 @@ body
   .demos
 
     .demo
+      position: relative
       +float-left
       margin: 0 10px 10px 0
       padding: 10px
@@ -156,19 +157,11 @@ body
       +border-radius(5px)
 
     .demo-bd
-      position: relative
       margin-bottom: 10px
       width: 350px
       height: 210px
       background: #FFFFFF
       +border-radius(5px)
-
-      .demo-link
-        position: absolute
-        top: 0
-        left: 0
-        width: 350px
-        height: 250px
 
     .demo-ft
       text-indent: 10px
@@ -178,6 +171,13 @@ body
       +border-radius(5px)
       background: $COLOR_TURQUOISE
       overflow: hidden
+
+    .demo-link
+      position: absolute
+      top: 10px
+      left: 10px
+      width: 350px
+      height: 250px
 
   .code
 
