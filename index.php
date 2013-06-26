@@ -40,7 +40,7 @@
 
         <!--S cont -->
         <div class="cont">
-          <article class="main code">
+          <article id="J_Code" class="main code">
             <header id="J_CodeHd" class="main-hd">
               <a href="javascript:window.history.go(-1);" class="back">← 返回</a>
               <a href="javascript:;" id="J_Commit" class="btn"><i class="icon-pencil"></i>提交</a>

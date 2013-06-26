@@ -64,6 +64,8 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate, TipsModel, TipsView) {
     self.tipsModel = new TipsModel();
     self.tipsView  = new TipsView({model: self.tipsModel});
     self.$info     = $('#J_Info');
+    self.$code     = $('#J_Code');
+    self.$codeHd   = $('#J_CodeHd');
     self.$codeBd   = $('#J_CodeBd');
     self.iframe    = $('#J_PreviewIframe')[0].contentWindow.document;
 
@@ -233,7 +235,56 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate, TipsModel, TipsView) {
           $label = $('.J_EditorLabel', target);
 
       type === 'mouseenter' && $label.show() || $label.hide();
+    },
+
+    /**
+     * 编辑器缩放
+     */
+    editorResize: function(e) {
+      var self   = this,
+          target = $(e.currentTarget),
+          $icon  = target.one('i'),
+          editor = $icon.attr('data-editor'),
+          screen = $icon.attr('data-screen');
+
+      var $editor       = $('#J_' + editor),
+          $editorWrap   = $editor.parent(),
+          $editorColumn = $editorWrap.parent();
+
+      var fullIconClass  = 'icon-fullscreen',
+          smallIconClass = 'icon-resize-small';
+
+    if (screen === 'small') {
+
+      self.$code.addClass('full-screen');
+
+      $icon.attr('data-screen', 'full')
+           .removeClass(fullIconClass)
+           .addClass(smallIconClass);
+
+      $editorWrap.css('height', '100%')
+                 .siblings().hide();
+
+      $editorColumn.css('width', '100%')
+                   .siblings().hide();
+
+    } else {
+
+      self.$code.removeClass('full-screen');
+
+      $icon.attr('data-screen', 'small')
+           .removeClass(smallIconClass)
+           .addClass(fullIconClass);
+
+      $editorWrap.css('height', '50%')
+                 .siblings().show();
+
+      $editorColumn.css('width', '50%')
+                   .siblings().show();
     }
+
+    self[editor] && self[editor].resize();
+  }
   }, {
     ATTRS: {
       el    : {
@@ -241,14 +292,18 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate, TipsModel, TipsView) {
       },
       events: {
         value: {
-          '#J_Commit'    : {
+          '#J_Commit': {
             click: 'save'
           },
-          '#J_Update'    : {
+          '#J_Update': {
             click: 'save'
           },
           '.J_EditorWrap': {
-            'mouseenter mouseleave': 'labelHandler'
+            'mouseenter': 'labelHandler',
+            'mouseleave': 'labelHandler'
+          },
+          '.J_EditorLabel': {
+            'click': 'editorResize'
           }
         }
       }
