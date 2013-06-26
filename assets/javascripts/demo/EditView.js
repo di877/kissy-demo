@@ -222,6 +222,17 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate, TipsModel, TipsView) {
           self.tipsView.render();
         }
       });
+    },
+
+    /**
+     * 标签显示控制
+     */
+    labelHandler: function(e) {
+      var type   = e.type,
+          target = $(e.currentTarget),
+          $label = $('.J_EditorLabel', target);
+
+      type === 'mouseenter' && $label.show() || $label.hide();
     }
   }, {
     ATTRS: {
@@ -230,11 +241,14 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate, TipsModel, TipsView) {
       },
       events: {
         value: {
-          '#J_Commit': {
+          '#J_Commit'    : {
             click: 'save'
           },
-          '#J_Update': {
+          '#J_Update'    : {
             click: 'save'
+          },
+          '.J_EditorWrap': {
+            'mouseenter mouseleave': 'labelHandler'
           }
         }
       }
