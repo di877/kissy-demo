@@ -4,7 +4,7 @@
  * @version 1.0
  */
 
-KISSY.add('demo/EditView', function(S, MVC, XTemplate) {
+KISSY.add('demo/EditView', function(S, MVC, XTemplate, TipsModel, TipsView) {
 
   var $ = S.all;
 
@@ -59,10 +59,12 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate) {
 
     EditView.superclass.constructor.apply(this, arguments);
 
-    self.$el    = self.get('el');
-    self.model  = self.get('model');
-    self.$info  = $('#J_Info');
-    self.iframe = $('#J_PreviewIframe')[0].contentWindow.document;
+    self.$el       = self.get('el');
+    self.model     = self.get('model');
+    self.tipsModel = new TipsModel();
+    self.tipsView  = new TipsView({model: self.tipsModel});
+    self.$info     = $('#J_Info');
+    self.iframe    = $('#J_PreviewIframe')[0].contentWindow.document;
 
     self.createEditor();
 
@@ -198,6 +200,11 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate) {
 
       self.model.save({
         success: function(data) {
+          self.tipsModel.set({
+            status : data.status,
+            message: data.message
+          });
+          self.tipsView.render();
         }
       });
     }
@@ -223,6 +230,6 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate) {
 
 }, {
 
-  requires: ['mvc', 'xtemplate']
+  requires: ['mvc', 'xtemplate', 'demo/TipsModel', 'demo/TipsView']
 
 });

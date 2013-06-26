@@ -7,11 +7,9 @@
   </head>
   <body>
     <div class="wrap">
-
       <header class="head">
         <div id="J_Tips" class="tips"></div>
       </header>
-
       <div id="J_List" class="list">
 
         <!--S cont -->
@@ -38,7 +36,6 @@
         <!--E side -->
 
       </div>
-
       <div id="J_Edit" class="edit">
 
         <!--S cont -->
@@ -85,7 +82,6 @@
         <!--E side -->
 
       </div>
-
     </div>
 
     <?php
