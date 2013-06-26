@@ -55,7 +55,7 @@ KISSY.add('demo/ApiView', function(S, MVC, XTemplate) {
             '{{/hasSubcls}}',
         '</li>',
       '{{/subcls}}',
-    '{{/api}}',
+    '{{/api}}'
   ].join(''));
 
   /**
@@ -67,9 +67,6 @@ KISSY.add('demo/ApiView', function(S, MVC, XTemplate) {
     ApiView.superclass.constructor.apply(this, arguments);
     self.$el   = self.get('el');
     self.model = self.get('model');
-    self.model.on('afterModuleChange', function(e) {
-
-    });
   };
 
   S.extend(ApiView, MVC.View, {
