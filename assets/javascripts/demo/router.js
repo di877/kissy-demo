@@ -25,7 +25,7 @@ KISSY.add('demo/router', function(S, MVC, ApiCollection, ApisView, DemoModel, De
     self.demoModel      = new DemoModel();
     self.demoCollection = new DemoCollection();
     self.demosView      = new DemosView({models: self.demoCollection}).render();
-    self.editView       = new EditView({model: self.demoModel});
+    self.editView       = new EditView({model: self.demoModel}).render();
   };
 
   S.extend(Router, MVC.Router, {

@@ -64,22 +64,37 @@ KISSY.add('demo/EditView', function(S, MVC, XTemplate, TipsModel, TipsView) {
     self.tipsModel = new TipsModel();
     self.tipsView  = new TipsView({model: self.tipsModel});
     self.$info     = $('#J_Info');
+    self.$codeBd   = $('#J_CodeBd');
     self.iframe    = $('#J_PreviewIframe')[0].contentWindow.document;
 
     self.createEditor();
 
     self.model.on('*Change', function() {
-      self.render();
+      var demo = self.model.toJSON();
+
+      self.$info.html(TPL_INFO.render({demo: demo}));
+      self.setEditorVal(demo);
     });
   };
 
   S.extend(EditView, MVC.View, {
     render: function() {
-      var self = this,
-          demo = self.model.toJSON();
+      var self = this;
 
-      self.$info.html(TPL_INFO.render({demo: demo}));
-      self.setEditorVal(demo);
+      self.reset();
+
+      $(window).on('resize', function() {
+        self.reset();
+      });
+    },
+
+    /**
+     * 重置高度
+     */
+    reset : function() {
+      var self = this;
+
+      self.$codeBd.css('height', $(window).height() - 121);
     },
 
     /**
