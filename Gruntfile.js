@@ -20,7 +20,7 @@ module.exports = function(grunt) {
     cssmin: {
       compress: {
         files: {
-          './assets/build/style-min.css': [DIR_CSS + 'compiled/style.css']
+          './assets/build/style-min.css': [DIR_CSS + 'compiled/style.css', DIR_CSS + 'compiled/font-awesome.css']
         }
       }
     },
