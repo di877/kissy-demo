@@ -89,13 +89,15 @@
       $isDev = isset($_GET['__dev__']);
       /* seed 配置 */
       if ($isDev) {
+        $host = 'http://g.assets.daily.taobao.net/';
         $seed = 'seed.js';
       } else {
+        $host = 'http://g.tbcdn.cn/';
         $seed = 'seed-min.js';
       }
     ?>
 
-    <script src="http://a.tbcdn.cn/s/kissy/1.3.0/<?=$seed?>"></script>
+    <script src="<?=$host?>kissy/k/1.3.0/<?=$seed?>"></script>
     <script src="./assets/build/ace/ace.js"></script>
     <script src="./assets/build/core.js"></script>
   </body>

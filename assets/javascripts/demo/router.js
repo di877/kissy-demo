@@ -49,7 +49,8 @@ KISSY.add('demo/router', function(S, MVC, ApiCollection, ApisView, DemoModel, De
       }).load({
         data : {
           p: p
-        }
+        },
+        cache: false
       });
     },
 
