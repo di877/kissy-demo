@@ -9,5 +9,11 @@
     code          => $_GET["code"]
   );
 
+  // 获取Token
   $token  = Util::post("https://github.com/login/oauth/access_token", $params);
-  $user   = Util::get("https://api.github.com/user?".$token);
+
+  // 设置Token
+  setcookie('token', $token, time() + 86400, '/');
+
+  // 返回上一页
+  echo "<script> history.go(-1) </script>";
