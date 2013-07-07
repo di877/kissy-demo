@@ -46,6 +46,7 @@
               <a href="javascript:;" id="J_Commit" class="btn"><i class="icon-pencil"></i>提交</a>
               <a href="javascript:;" id="J_Update" class="btn"><i class="icon-refresh"></i>更新</a>
               <a href="javascript:;" id="J_Debug" class="btn"><i class="icon-check"></i>预览</a>
+              <a href="https://github.com/login/oauth/authorize?client_id=442b4d1abc1629ec9a7e&scope=user" id="J_Login" class="btn"><i class="icon-github-alt"></i>登录</a>
             </header>
             <div id="J_CodeBd" class="main-bd">
               <fieldset class="column left">
