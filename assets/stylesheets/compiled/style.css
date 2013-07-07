@@ -476,40 +476,38 @@ body a:hover {
 }
 /* line 352, ../src/style.sass */
 .side .sidebar .sidebar-bd .modules .module-name i {
-  display: inline;
-  float: left;
-  line-height: 16px;
+  margin-right: 5px;
 }
-/* line 356, ../src/style.sass */
+/* line 355, ../src/style.sass */
 .side .sidebar .sidebar-bd .modules .subcats, .side .sidebar .sidebar-bd .modules .entries {
   display: none;
   overflow: hidden;
 }
-/* line 360, ../src/style.sass */
+/* line 359, ../src/style.sass */
 .side .sidebar .sidebar-bd .modules .subcat-name, .side .sidebar .sidebar-bd .modules .entrie {
   padding: 10px 10px 10px 27px;
 }
-/* line 363, ../src/style.sass */
+/* line 362, ../src/style.sass */
 .side .sidebar .sidebar-bd .modules .subcat-name {
   color: white;
   border-bottom: 1px solid #16a085;
   background: #1abc9c;
 }
-/* line 368, ../src/style.sass */
+/* line 367, ../src/style.sass */
 .side .sidebar .sidebar-bd .modules .entrie {
   border-bottom: 1px solid #bdc3c7;
   background: #ecf0f1;
 }
-/* line 372, ../src/style.sass */
+/* line 371, ../src/style.sass */
 .side .sidebar .sidebar-bd .modules .entrie .entrie-name {
   margin-bottom: 5px;
 }
-/* line 375, ../src/style.sass */
+/* line 374, ../src/style.sass */
 .side .sidebar .sidebar-bd .modules .entrie .entrie-desc {
   font-size: 12px;
   color: #999999;
 }
-/* line 379, ../src/style.sass */
+/* line 378, ../src/style.sass */
 .side .sidebar .sidebar-bd .modules .current {
   color: white;
   background: #3498db;
@@ -519,11 +517,11 @@ body a:hover {
   -moz-box-shadow: black 2px 2px 10px;
   box-shadow: black 2px 2px 10px;
 }
-/* line 386, ../src/style.sass */
+/* line 385, ../src/style.sass */
 .side .sidebar .sidebar-bd .modules .current .entrie-desc {
   color: white;
 }
-/* line 393, ../src/style.sass */
+/* line 392, ../src/style.sass */
 .side .info .info-hd h2 {
   margin-bottom: 20px;
   padding-bottom: 10px;
@@ -535,7 +533,7 @@ body a:hover {
   border-bottom: 1px solid #dddddd;
   overflow: hidden;
 }
-/* line 406, ../src/style.sass */
+/* line 405, ../src/style.sass */
 .side .info .info-bd li {
   position: relative;
   margin-bottom: 20px;
