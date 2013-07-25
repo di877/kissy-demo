@@ -20,6 +20,7 @@ KISSY.add('demo/router', function(S, MVC, ApiCollection, ApisView, DemoModel, De
     self.$edit          = $('#J_Edit');
     self.$commit        = $('#J_Commit');
     self.$update        = $('#J_Update');
+    self.$downLoad      = $('#J_DownLoad');
     self.apiCollection  = new ApiCollection().load();
     self.apisView       = new ApisView({models: self.apiCollection}).render();
     self.demoModel      = new DemoModel();
@@ -62,6 +63,7 @@ KISSY.add('demo/router', function(S, MVC, ApiCollection, ApisView, DemoModel, De
       self.$edit.show();
       self.$commit.show();
       self.$update.hide();
+      self.$downLoad.hide();
 
       self.demoModel.set({
         id     : '',
@@ -84,6 +86,7 @@ KISSY.add('demo/router', function(S, MVC, ApiCollection, ApisView, DemoModel, De
       self.$edit.show();
       self.$commit.hide();
       self.$update.show();
+      self.$downLoad.attr('href', './demo/' + id + '.html').show();
 
       if (demo) {
         self.demoModel.set(demo.toJSON());
